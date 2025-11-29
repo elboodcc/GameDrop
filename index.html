@@ -6,151 +6,31 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
         /* RESET Y BASE */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background: #0e0f11;
-            font-family: 'Roboto', sans-serif;
-            color: #fff;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
+        * { margin: 0; padding: 0; box‑sizing: border-box; }
+        body { background: #0e0f11; font-family: 'Roboto', sans-serif; color: #fff; }
+        a { text-decoration: none; color: inherit; }
         /* NAVBAR */
-        nav {
-            background: #15161a;
-            padding: 15px 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.5);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        nav .logo {
-            color: #00d4ff;
-            font-size: 28px;
-            font-weight: 700;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 25px;
-        }
-
-        nav ul li a {
-            color: #ccc;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        nav ul li a:hover {
-            color: #00d4ff;
-        }
-
+        nav { background: #15161a; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 3px 10px rgba(0,0,0,0.5); position: sticky; top: 0; z-index: 100; }
+        nav .logo { color: #00d4ff; font-size: 28px; font-weight: 700; }
+        nav ul { list-style: none; display: flex; gap: 25px; }
+        nav ul li a { color: #ccc; font-weight: 500; transition: color 0.3s; }
+        nav ul li a:hover { color: #00d4ff; }
         /* CONTENEDOR PRINCIPAL */
-        .container {
-            padding: 40px 30px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 35px;
-        }
-
+        .container { padding: 40px 30px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 35px; }
         /* TARJETAS DE JUEGO */
-        .game-card {
-            background: #1a1c21;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .game-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 25px rgba(0,212,255,0.4);
-        }
-
-        .game-thumb img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            transition: transform 0.3s;
-        }
-
-        .game-card:hover .game-thumb img {
-            transform: scale(1.05);
-        }
-
-        .game-info {
-            padding: 20px;
-        }
-
-        .game-title {
-            font-size: 22px;
-            margin-bottom: 10px;
-            color: #00d4ff;
-            font-weight: 700;
-        }
-
-        .game-desc {
-            font-size: 14px;
-            color: #bfbfbf;
-            margin-bottom: 15px;
-            line-height: 1.5;
-        }
-
-        .game-req {
-            font-size: 13px;
-            background: #111;
-            padding: 10px;
-            border-radius: 7px;
-            margin-bottom: 15px;
-            color: #ccc;
-        }
-
-        .download-btn {
-            display: inline-block;
-            background: linear-gradient(90deg, #00d4ff, #00a6c4);
-            padding: 12px 20px;
-            color: #000;
-            font-weight: 700;
-            border-radius: 8px;
-            transition: all 0.3s;
-            text-align: center;
-        }
-
-        .download-btn:hover {
-            background: linear-gradient(90deg, #00a6c4, #00d4ff);
-            transform: scale(1.05);
-            color: #fff;
-        }
-
+        .game-card { background: #1a1c21; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.5); transition: transform 0.3s, box-shadow 0.3s; }
+        .game-card:hover { transform: translateY(-10px); box-shadow: 0 15px 25px rgba(0,212,255,0.4); }
+        .game-thumb img { width: 100%; height: 200px; object-fit: cover; transition: transform 0.3s; }
+        .game-card:hover .game-thumb img { transform: scale(1.05); }
+        .game-info { padding: 20px; }
+        .game-title { font-size: 22px; margin-bottom: 10px; color: #00d4ff; font-weight: 700; }
+        .game-desc { font-size: 14px; color: #bfbfbf; margin-bottom: 15px; line-height: 1.5; }
+        .game-req { font-size: 13px; background: #111; padding: 10px; border-radius: 7px; margin-bottom: 15px; color: #ccc; }
+        .download-btn { display: inline-block; background: linear-gradient(90deg, #00d4ff, #00a6c4); padding: 12px 20px; color: #000; font-weight: 700; border-radius: 8px; transition: all 0.3s; text-align: center; }
+        .download-btn:hover { background: linear-gradient(90deg, #00a6c4, #00d4ff); transform: scale(1.05); color: #fff; }
         /* FOOTER */
-        footer {
-            text-align: center;
-            padding: 25px;
-            color: #555;
-            margin-top: 50px;
-            border-top: 1px solid #222;
-        }
-
-        /* RESPONSIVE */
-        @media(max-width: 500px){
-            nav ul {
-                flex-direction: column;
-                gap: 15px;
-            }
-        }
+        footer { text-align: center; padding: 25px; color: #555; margin-top: 50px; border-top: 1px solid #222; }
+        @media(max-width: 500px){ nav ul { flex-direction: column; gap: 15px; } }
     </style>
 </head>
 <body>
@@ -167,7 +47,52 @@
 
 <div class="container">
 
-    <!-- JUEGO: Terraria -->
+    <!-- ULTRAKILL -->
+    <div class="game-card">
+        <div class="game-thumb">
+            <img src="imgs/ultrakill.jpg" alt="ULTRAKILL">
+        </div>
+        <div class="game-info">
+            <div class="game-title">ULTRAKILL</div>
+            <div class="game-desc">
+                ULTRAKILL es un frenético shooter en primera persona con estética retro‑pixel, violencia intensa, acción rápida y un estilo muy marcado. Ideal si te gustan los shooters old‑school con mecánicas modernas. :contentReference[oaicite:2]{index=2}
+            </div>
+            <div class="game-req">
+                <b>Requisitos mínimos:</b><br>
+                - OS: Windows 10 64‑bits<br>
+                - CPU: 2.4 GHz Dual‑Core o superior<br>
+                - RAM: 4 GB RAM<br>
+                - Gráficos: NVIDIA GeForce GTX 560 o equivalente<br>
+                - DirectX: 11<br>
+                - Espacio libre: 3 GB :contentReference[oaicite:3]{index=3}
+            </div>
+            <a class="download-btn" href="https://www.mediafire.com/file/5a0j760kvu8c92j/UK_-.rar/file" target="_blank">DESCARGAR</a>
+        </div>
+    </div>
+
+    <!-- Left 4 Dead -->
+    <div class="game-card">
+        <div class="game-thumb">
+            <img src="imgs/left4dead.jpg" alt="Left 4 Dead">
+        </div>
+        <div class="game-info">
+            <div class="game-title">Left 4 Dead</div>
+            <div class="game-desc">
+                Left 4 Dead es un shooter cooperativo de horror/zombis donde hasta 4 jugadores luchan por sobrevivir contra hordas de infectados. Ideal para jugar con amigos en modo cooperativo. :contentReference[oaicite:4]{index=4}
+            </div>
+            <div class="game-req">
+                <b>Requisitos mínimos:</b><br>
+                - OS: Windows XP / Vista / 7 (32 o 64 bits)<br>
+                - CPU: Pentium 4 a 3.0 GHz (o equivalente)<br>
+                - RAM: 1 GB RAM<br>
+                - Gráficos: 128 MB VRAM (compatible con Pixel Shader 2.0), ATI 9600 / NVIDIA 6600 o superior<br>
+                - Espacio libre: 7.5 GB :contentReference[oaicite:5]{index=5}
+            </div>
+            <a class="download-btn" href="https://www.mediafire.com/file/lkaeeuyx93jjmba/LFORD_1.rar/file" target="_blank">DESCARGAR</a>
+        </div>
+    </div>
+
+    <!-- Terraria -->
     <div class="game-card">
         <div class="game-thumb">
             <img src="imgs/terraria.jpg" alt="Terraria">
@@ -175,21 +100,21 @@
         <div class="game-info">
             <div class="game-title">Terraria</div>
             <div class="game-desc">
-                Terraria es un juego de acción, aventura y sandbox en 2D. Permite explorar mundos generados aleatoriamente, construir estructuras, recolectar recursos, fabricar objetos, combatir monstruos y jefes, y desarrollar tu personaje mientras descubres biomas, mazmorras y secretos. :contentReference[oaicite:4]{index=4}
+                Terraria es un juego de acción, aventura y sandbox en 2D. Permite explorar mundos generados aleatoriamente, construir estructuras, recolectar recursos, fabricar objetos, combatir monstruos y jefes, y desarrollar tu personaje mientras descubres biomas, mazmorras y secretos.
             </div>
             <div class="game-req">
-                <b>Requisitos mínimos:</b><br>
+                <b>Requisitos mínimos (aproximados):</b><br>
+                - OS: Windows XP / Vista / 7 / 8 / 10<br>
                 - CPU: 2.0 GHz<br>
-                - RAM: 2.5 GB<br>
-                - Gráficos: 128 MB VRAM (Shader Model 2.0+)<br>
-                - Espacio: 200 MB libres<br>
-                - OS: Windows XP/Vista/7/8/10 :contentReference[oaicite:5]{index=5}
+                - RAM: 2.5 GB (o más)<br>
+                - Gráficos: 128 MB VRAM compatible con Shader Model 2.0+<br>
+                - Espacio libre: ~200 MB :contentReference[oaicite:6]{index=6}
             </div>
             <a class="download-btn" href="https://www.mediafire.com/file/izmaa3vpe8fz38k/T.RR.A_1.4.4.9.rar/file" target="_blank">DESCARGAR</a>
         </div>
     </div>
 
-    <!-- JUEGO: Stardew Valley -->
+    <!-- Stardew Valley -->
     <div class="game-card">
         <div class="game-thumb">
             <img src="imgs/stardew_valley.jpg" alt="Stardew Valley">
@@ -197,21 +122,22 @@
         <div class="game-info">
             <div class="game-title">Stardew Valley</div>
             <div class="game-desc">
-                Stardew Valley es un simulador de granja y vida rural donde heredas una granja abandonada y debes cultivarla, criar animales, pescar, explorar minas, socializar con los habitantes del pueblo y restaurar la prosperidad del valle. Tiene mezcla de gestión, aventuras RPG, agricultura, exploración y vida pacífica. :contentReference[oaicite:6]{index=6}
+                Stardew Valley es un simulador de granja y vida rural donde heredas una granja abandonada y debes cultivarla, criar animales, pescar, explorar minas, socializar con los habitantes del pueblo y restaurar la prosperidad del valle. Tiene mezcla de gestión, aventuras RPG, agricultura, exploración y vida tranquila. :contentReference[oaicite:7]{index=7}
             </div>
             <div class="game-req">
                 <b>Requisitos mínimos:</b><br>
+                - OS: Windows 7 / Vista o superior<br>
                 - CPU: 2.0 GHz<br>
-                - RAM: 2 GB<br>
-                - Gráficos: 256 MB VRAM (Shader Model 3.0+)<br>
-                - Espacio: 500 MB libres<br>
-                - OS: Windows Vista o superior :contentReference[oaicite:7]{index=7}
+                - RAM: 2 GB RAM<br>
+                - Gráficos: 256 MB VRAM, Shader Model 3.0+<br>
+                - DirectX: 10<br>
+                - Espacio libre: 500 MB :contentReference[oaicite:8]{index=8}
             </div>
             <a class="download-btn" href="https://www.mediafire.com/file/xg1eezjp787zf8f/STAR._VALLEY_By_Sajord.rar/file" target="_blank">DESCARGAR</a>
         </div>
     </div>
 
-    <!-- JUEGO: Project Zomboid -->
+    <!-- Project Zomboid -->
     <div class="game-card">
         <div class="game-thumb">
             <img src="imgs/project_zomboid.jpg" alt="Project Zomboid">
@@ -219,21 +145,21 @@
         <div class="game-info">
             <div class="game-title">Project Zomboid</div>
             <div class="game-desc">
-                Project Zomboid es un juego de supervivencia en un mundo post‑apocalíptico. Debes sobrevivir al brote zombie, recolectar recursos, fortificar refugios, explorar, buscar suministros, y enfrentarte a hordas de zombis. Tiene un enfoque realista de supervivencia, con necesidad de gestionar hambre, sueño, salud, refugio y defensa. :contentReference[oaicite:8]{index=8}
+                Project Zomboid es un juego de supervivencia en un mundo post‑apocalíptico donde debes sobrevivir al brote zombie: recolectar recursos, fortificar refugios, explorar, buscar suministros, y enfrentarte a hordas de zombis. Tiene enfoque realista de supervivencia, con necesidad de gestionar hambre, sueño, salud, refugio y defensa. 
             </div>
             <div class="game-req">
                 <b>Requisitos mínimos:</b><br>
-                - CPU: Intel 2.77 GHz Quad‑core<br>
-                - RAM: 8 GB<br>
-                - Gráficos: Tarjeta dedicada con al menos 2 GB VRAM, compatible con OpenGL 2.1 + GLSL 1.2<br>
-                - Espacio: 5 GB libres<br>
-                - OS: Windows 10 64‑bit (también disponible en macOS y Linux) :contentReference[oaicite:9]{index=9}
+                - OS: Windows XP / Vista / 7 (32 o 64 bits) o superior<br>
+                - CPU: Intel 2.77 GHz Dual‑Core o comparable<br>
+                - RAM: 2 GB RAM<br>
+                - Gráficos: Tarjeta compatible con OpenGL 2.1<br>
+                - Espacio libre: ~1.2 GB :contentReference[oaicite:9]{index=9}
             </div>
             <a class="download-btn" href="https://www.mediafire.com/file/43j6czv9h6hr6ui/ProjectZomboid_%255B42.0.2%255D_-_TheFenix010.rar/file" target="_blank">DESCARGAR</a>
         </div>
     </div>
 
-    <!-- JUEGO: Garry's Mod -->
+    <!-- Garry's Mod -->
     <div class="game-card">
         <div class="game-thumb">
             <img src="imgs/garrys_mod.jpg" alt="Garry's Mod">
@@ -241,15 +167,15 @@
         <div class="game-info">
             <div class="game-title">Garry's Mod</div>
             <div class="game-desc">
-                Garry's Mod es un sandbox sin objetivos fijos, donde puedes manipular objetos, construir tus propios escenarios, usar mods o modos de juego hechos por la comunidad, y experimentar con física, escenarios y creatividad. Ofrece libertad total — todo depende de lo que tú quieras crear. :contentReference[oaicite:10]{index=10}
+                Garry's Mod es un sandbox sin objetivos fijos: puedes manipular objetos, construir tus propios escenarios, usar mods o modos de juego hechos por la comunidad, y experimentar con física, escenarios y creatividad. Ofrece libertad total — todo depende de lo que tú quieras crear.
             </div>
             <div class="game-req">
-                <b>Requisitos mínimos:</b><br>
-                - CPU: 2.0 GHz o superior<br>
-                - RAM: 4 GB<br>
-                - Gráficos: 1 GB VRAM dedicada o mejor<br>
-                - Espacio: 10 GB libres<br>
-                - OS: Windows 10 :contentReference[oaicite:11]{index=11}
+                <b>Requisitos mínimos (estimados):</b><br>
+                - OS: Windows 7 / 8 / 10 (o superior)<br>
+                - CPU: ~2.0 GHz o superior<br>
+                - RAM: 4 GB RAM<br>
+                - Gráficos: 1 GB VRAM dedicada (o más) recomendada<br>
+                - Espacio libre: ~10 GB (según instalación/mods/objetos)  
             </div>
             <a class="download-btn" href="https://www.mediafire.com/file/12kpiyux8dxo7yi/Garrys_M0d.rar/file" target="_blank">DESCARGAR</a>
         </div>
