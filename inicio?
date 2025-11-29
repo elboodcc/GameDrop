@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Juegos para Descargar</title>
+    <style>
+        body { font-family: Arial; background: #111; color: #fff; text-align: center; }
+        .juego { background:#222; padding:20px; margin:20px auto; width:300px; border-radius:10px; }
+        a { color:#00d4ff; text-decoration:none; }
+    </style>
+</head>
+<body>
+    <h1>Mis Juegos para Descargar</h1>
+
+    <div class="juego">
+        <h2>Juego 1</h2>
+        <p>Descripción breve del juego.</p>
+        <a href="juegos/juego1.zip" download>Descargar</a>
+    </div>
+
+    <div class="juego">
+        <h2>Juego 2</h2>
+        <p>Otro juego disponible.</p>
+        <a href="juegos/juego2.zip" download>Descargar</a>
+    </div>
+
+</body>
+</html>
