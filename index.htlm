@@ -2,27 +2,44 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Juegos para Descargar</title>
+    <title>GameDrop - Descargas de Juegos</title>
     <style>
-        body { font-family: Arial; background: #111; color: #fff; text-align: center; }
-        .juego { background:#222; padding:20px; margin:20px auto; width:300px; border-radius:10px; }
-        a { color:#00d4ff; text-decoration:none; }
-    </style>
-</head>
-<body>
-    <h1>Mis Juegos para Descargar</h1>
+        body {
+            background: #0d0d0d;
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            color: white;
+        }
 
-    <div class="juego">
-        <h2>Juego 1</h2>
-        <p>Descripción breve del juego.</p>
-        <a href="juegos/juego1.zip" download>Descargar</a>
-    </div>
+        header {
+            background: #111;
+            padding: 20px;
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+            color: #00d4ff;
+            letter-spacing: 1px;
+        }
 
-    <div class="juego">
-        <h2>Juego 2</h2>
-        <p>Otro juego disponible.</p>
-        <a href="juegos/juego2.zip" download>Descargar</a>
-    </div>
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
 
-</body>
-</html>
+        .card {
+            background: #1b1b1b;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 10px #000;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.03);
+        }
+
+        .card img {
+            width: 100%;
+
