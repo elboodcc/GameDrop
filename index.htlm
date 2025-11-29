@@ -2,44 +2,186 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>GameDrop - Descargas de Juegos</title>
+    <title>GameZone - Descargas de Juegos</title>
     <style>
         body {
-            background: #0d0d0d;
-            font-family: Arial, Helvetica, sans-serif;
             margin: 0;
-            color: white;
+            background: #0e0f11;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #fff;
         }
 
-        header {
-            background: #111;
-            padding: 20px;
-            text-align: center;
-            font-size: 28px;
-            font-weight: bold;
+        /* NAV */
+        nav {
+            background: #15161a;
+            padding: 15px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px #000;
+        }
+
+        nav .logo {
             color: #00d4ff;
-            letter-spacing: 1px;
+            font-size: 26px;
+            font-weight: bold;
         }
 
-        .container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        nav ul {
+            list-style: none;
+            display: flex;
             gap: 20px;
-            padding: 20px;
         }
 
-        .card {
-            background: #1b1b1b;
-            border-radius: 10px;
+        nav ul li a {
+            color: #ccc;
+            text-decoration: none;
+            font-weight: bold;
+            transition: .3s;
+        }
+
+        nav ul li a:hover {
+            color: #00d4ff;
+        }
+
+        /* CONTENEDOR */
+        .container {
+            padding: 30px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        /* TARJETA DE JUEGO */
+        .game-card {
+            background: #1a1c21;
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 0 10px #000;
-            transition: 0.3s;
+            box-shadow: 0 0 15px #000;
+            transition: .3s;
         }
 
-        .card:hover {
+        .game-card:hover {
             transform: scale(1.03);
         }
 
-        .card img {
+        .game-thumb img {
             width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
 
+        .game-info {
+            padding: 20px;
+        }
+
+        .game-title {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #00d4ff;
+        }
+
+        .game-desc {
+            color: #bfbfbf;
+            font-size: 14px;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+
+        .game-req {
+            font-size: 13px;
+            background: #111;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            color: #ccc;
+        }
+
+        .download-btn {
+            display: inline-block;
+            background: #00d4ff;
+            padding: 12px 15px;
+            color: #000;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: .2s;
+        }
+
+        .download-btn:hover {
+            background: #00a6c4;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #555;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="logo">GameZone</div>
+    <ul>
+        <li><a href="#">Inicio</a></li>
+        <li><a href="#">Juegos</a></li>
+        <li><a href="#">Contacto</a></li>
+        <li><a href="#">Acerca</a></li>
+    </ul>
+</nav>
+
+<div class="container">
+
+    <!-- JUEGO EJEMPLO 1 -->
+    <div class="game-card">
+        <div class="game-thumb">
+            <img src="imgs/juego1.jpg" alt="Juego 1">
+        </div>
+        <div class="game-info">
+            <div class="game-title">Juego de Acción</div>
+            <div class="game-desc">
+                Un juego lleno de adrenalina con gráficos impresionantes y jugabilidad rápida.
+            </div>
+            <div class="game-req">
+                <b>Requisitos:</b><br>
+                - 4 GB RAM<br>
+                - 2 GB VRAM<br>
+                - 10 GB de espacio<br>
+                - Windows 10
+            </div>
+            <a class="download-btn" href="https://www.mediafire.com/tu-link" target="_blank">DESCARGAR</a>
+        </div>
+    </div>
+
+    <!-- JUEGO EJEMPLO 2 -->
+    <div class="game-card">
+        <div class="game-thumb">
+            <img src="imgs/juego2.jpg" alt="Juego 2">
+        </div>
+        <div class="game-info">
+            <div class="game-title">Aventura Épica</div>
+            <div class="game-desc">
+                Explora mundos enormes, encuentra tesoros y derrota enemigos legendarios.
+            </div>
+            <div class="game-req">
+                <b>Requisitos:</b><br>
+                - 8 GB RAM<br>
+                - 3 GB VRAM<br>
+                - 20 GB de espacio<br>
+                - Windows 10/11
+            </div>
+            <a class="download-btn" href="https://drive.google.com/tu-link" target="_blank">DESCARGAR</a>
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    © 2025 GameZone - Todos los derechos reservados.
+</footer>
+
+</body>
+</html>
