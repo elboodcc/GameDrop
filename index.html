@@ -16,7 +16,8 @@
         .container { padding: 40px 30px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 35px; }
         .game-card { background: #1a1c21; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.5); transition: transform 0.3s, box-shadow 0.3s; }
         .game-card:hover { transform: translateY(-10px); box-shadow: 0 15px 25px rgba(0,212,255,0.4); }
-        .game-thumb { height: 200px; background: #111; display: flex; align-items: center; justify-content: center; color: #555; font-size: 14px; }
+        .game-thumb img { width: 100%; height: 200px; object-fit: cover; transition: transform 0.3s; }
+        .game-card:hover .game-thumb img { transform: scale(1.05); }
         .game-info { padding: 20px; }
         .game-title { font-size: 22px; margin-bottom: 10px; color: #00d4ff; font-weight: 700; }
         .game-desc { font-size: 14px; color: #bfbfbf; margin-bottom: 15px; line-height: 1.5; }
@@ -41,22 +42,24 @@
 
 <div class="container">
 
-    <!-- JUEGOS YA EXISTENTES (NO LOS MODIFIQUÉ) -->
     <!-- ULTRAKILL -->
     <div class="game-card">
-        <div class="game-thumb">Sin imagen</div>
+        <div class="game-thumb">
+            <img src="imgs/ultrakill.jpg" alt="ULTRAKILL">
+        </div>
         <div class="game-info">
             <div class="game-title">ULTRAKILL</div>
             <div class="game-desc">
-                ULTRAKILL es un frenético shooter en primera persona con estética retro-pixel, violencia intensa y acción rápida.
+                ULTRAKILL es un frenético shooter en primera persona con estética retro‑pixel, violencia intensa, acción rápida y un estilo muy marcado.
             </div>
             <div class="game-req">
                 <b>Requisitos mínimos:</b><br>
-                OS: Windows 10 64-bits<br>
-                CPU: Dual-Core 2.4 GHz<br>
-                RAM: 4 GB<br>
-                GPU: GTX 560<br>
-                Espacio: 3 GB
+                - OS: Windows 10 64‑bits<br>
+                - CPU: 2.4 GHz Dual‑Core o superior<br>
+                - RAM: 4 GB RAM<br>
+                - Gráficos: NVIDIA GeForce GTX 560 o equivalente<br>
+                - DirectX: 11<br>
+                - Espacio libre: 3 GB
             </div>
             <a class="download-btn" href="https://www.mediafire.com/file/5a0j760kvu8c92j/UK_-.rar/file" target="_blank">DESCARGAR</a>
         </div>
@@ -64,143 +67,65 @@
 
     <!-- Left 4 Dead -->
     <div class="game-card">
-        <div class="game-thumb">Sin imagen</div>
+        <div class="game-thumb">
+            <img src="imgs/left4dead.jpg" alt="Left 4 Dead">
+        </div>
         <div class="game-info">
             <div class="game-title">Left 4 Dead</div>
             <div class="game-desc">
-                Shooter cooperativo de zombis donde cuatro supervivientes luchan contra infectados y jefes especiales.
+                Shooter cooperativo de horror/zombis donde hasta 4 jugadores luchan por sobrevivir contra hordas de infectados.
             </div>
             <div class="game-req">
                 <b>Requisitos mínimos:</b><br>
-                OS: Windows XP/Vista/7<br>
-                CPU: 3.0 GHz<br>
-                RAM: 1 GB<br>
-                GPU: NVIDIA 6600 / ATI 9600<br>
-                Espacio: 7.5 GB
+                - OS: Windows XP / Vista / 7 (32 o 64 bits)<br>
+                - CPU: Pentium 4 a 3.0 GHz o equivalente<br>
+                - RAM: 1 GB RAM<br>
+                - Gráficos: 128 MB VRAM compatible con Pixel Shader 2.0, ATI 9600 / NVIDIA 6600 o superior<br>
+                - Espacio libre: 7.5 GB
             </div>
             <a class="download-btn" href="https://www.mediafire.com/file/lkaeeuyx93jjmba/LFORD_1.rar/file" target="_blank">DESCARGAR</a>
         </div>
     </div>
 
-    <!-- Terraria -->
-    <div class="game-card">
-        <div class="game-thumb">Sin imagen</div>
-        <div class="game-info">
-            <div class="game-title">Terraria</div>
-            <div class="game-desc">
-                Aventura sandbox 2D con exploración, construcción, combate y jefes épicos.
-            </div>
-            <div class="game-req">
-                <b>Requisitos mínimos:</b><br>
-                OS: Windows XP+<br>
-                CPU: 2.0 GHz<br>
-                RAM: 2.5 GB<br>
-                Espacio: 200 MB
-            </div>
-            <a class="download-btn" href="https://www.mediafire.com/file/izmaa3vpe8fz38k/T.RR.A_1.4.4.9.rar/file" target="_blank">DESCARGAR</a>
-        </div>
-    </div>
-
-    <!-- Stardew Valley -->
-    <div class="game-card">
-        <div class="game-thumb">Sin imagen</div>
-        <div class="game-info">
-            <div class="game-title">Stardew Valley</div>
-            <div class="game-desc">
-                Simulador de granja con exploración, pesca, combate y vida social.
-            </div>
-            <div class="game-req">
-                <b>Requisitos mínimos:</b><br>
-                OS: Windows 7+<br>
-                CPU: 2.0 GHz<br>
-                RAM: 2 GB<br>
-                Espacio: 500 MB
-            </div>
-            <a class="download-btn" href="https://www.mediafire.com/file/xg1eezjp787zf8f/STAR._VALLEY_By_Sajord.rar/file" target="_blank">DESCARGAR</a>
-        </div>
-    </div>
-
-    <!-- Project Zomboid -->
-    <div class="game-card">
-        <div class="game-thumb">Sin imagen</div>
-        <div class="game-info">
-            <div class="game-title">Project Zomboid</div>
-            <div class="game-desc">
-                Juego de supervivencia realista en un brote zombi donde cada decisión importa.
-            </div>
-            <div class="game-req">
-                <b>Requisitos mínimos:</b><br>
-                OS: Windows XP+<br>
-                CPU: 2.8 GHz<br>
-                RAM: 2 GB<br>
-                GPU: OpenGL 2.1<br>
-                Espacio: 1.2 GB
-            </div>
-            <a class="download-btn" href="https://www.mediafire.com/file/43j6czv9h6hr6ui/ProjectZomboid_%255B42.0.2%255D_-_TheFenix010.rar/file" target="_blank">DESCARGAR</a>
-        </div>
-    </div>
-
-    <!-- Garry's Mod -->
-    <div class="game-card">
-        <div class="game-thumb">Sin imagen</div>
-        <div class="game-info">
-            <div class="game-title">Garry's Mod</div>
-            <div class="game-desc">
-                Sandbox basado en físicas donde puedes crear, modificar y experimentar con objetos y mods.
-            </div>
-            <div class="game-req">
-                <b>Requisitos mínimos:</b><br>
-                OS: Windows 7+<br>
-                CPU: 2.0 GHz<br>
-                RAM: 4 GB<br>
-                GPU: 1 GB VRAM<br>
-                Espacio: 10 GB
-            </div>
-            <a class="download-btn" href="https://www.mediafire.com/file/12kpiyux8dxo7yi/Garrys_M0d.rar/file" target="_blank">DESCARGAR</a>
-        </div>
-    </div>
-
-
-    <!-- ============================ -->
-    <!-- NUEVOS JUEGOS AÑADIDOS -->
-    <!-- ============================ -->
-
-
     <!-- FNAF 1 -->
     <div class="game-card">
-        <div class="game-thumb">Sin imagen</div>
+        <div class="game-thumb">
+            <img src="imgs/fnaf1.jpg" alt="Five Nights at Freddy's 1">
+        </div>
         <div class="game-info">
-            <div class="game-title">Five Nights at Freddy's (FNaF 1)</div>
+            <div class="game-title">Five Nights at Freddy's 1</div>
             <div class="game-desc">
-                Juego de terror donde trabajas de guardia nocturno vigilando animatrónicos que cobran vida. Debes administrar puertas, luces y energía para sobrevivir 5 noches.
+                Juego de terror y supervivencia en el que debes vigilar cámaras de seguridad para sobrevivir a los animatrónicos.
             </div>
             <div class="game-req">
                 <b>Requisitos mínimos:</b><br>
-                OS: Windows XP+<br>
-                CPU: 2.0 GHz<br>
-                RAM: 1 GB<br>
-                GPU: Compatible con DirectX 9<br>
-                Espacio: 250 MB
+                - OS: Windows XP / Vista / 7 / 8 / 10<br>
+                - CPU: 2.0 GHz<br>
+                - RAM: 2 GB<br>
+                - Gráficos: Compatible con DirectX 9.0c<br>
+                - Espacio libre: 250 MB
             </div>
             <a class="download-btn" href="https://www.mediafire.com/file/ysyqevytme41unq/Five%252BNights%252Bat%252BFreddys%252B1.rar/file" target="_blank">DESCARGAR</a>
         </div>
     </div>
 
-    <!-- Plants vs Zombies Replanted -->
+    <!-- Plants Vs Zombies Replanted -->
     <div class="game-card">
-        <div class="game-thumb">Sin imagen</div>
+        <div class="game-thumb">
+            <img src="imgs/pvzreplanted.jpg" alt="Plants Vs Zombies Replanted">
+        </div>
         <div class="game-info">
-            <div class="game-title">Plants vs Zombies Replanted</div>
+            <div class="game-title">Plants Vs Zombies Replanted</div>
             <div class="game-desc">
-                Versión mejorada del clásico PvZ con gráficos renovados, nuevas plantas, mapas y optimizaciones.
+                Defensa de jardín contra hordas de zombies usando plantas con habilidades únicas y estratégicas.
             </div>
             <div class="game-req">
                 <b>Requisitos mínimos:</b><br>
-                OS: Windows XP/Vista/7<br>
-                CPU: 1.2 GHz<br>
-                RAM: 1 GB<br>
-                GPU: Cualquier integrada<br>
-                Espacio: 200 MB
+                - OS: Windows 7 / 8 / 10<br>
+                - CPU: 1.8 GHz<br>
+                - RAM: 2 GB<br>
+                - Gráficos: 256 MB VRAM<br>
+                - Espacio libre: 500 MB
             </div>
             <a class="download-btn" href="https://www.mediafire.com/file/rjft7uyx0iz7da6/PvZ+Replant.+By+Sajord.zip/file" target="_blank">DESCARGAR</a>
         </div>
@@ -208,19 +133,21 @@
 
     <!-- GTA San Andreas -->
     <div class="game-card">
-        <div class="game-thumb">Sin imagen</div>
+        <div class="game-thumb">
+            <img src="imgs/gta_sa.jpg" alt="GTA San Andreas">
+        </div>
         <div class="game-info">
             <div class="game-title">GTA San Andreas</div>
             <div class="game-desc">
-                Mundo abierto clásico en el que CJ debe recuperar su barrio, completar misiones y explorar 3 grandes ciudades.
+                Acción y aventura en mundo abierto. Explora ciudades, completa misiones y vive la historia de CJ en San Andreas.
             </div>
             <div class="game-req">
                 <b>Requisitos mínimos:</b><br>
-                OS: Windows XP<br>
-                CPU: 1 GHz<br>
-                RAM: 256 MB<br>
-                GPU: 64 MB VRAM<br>
-                Espacio: 4.7 GB
+                - OS: Windows 2000 / XP / Vista / 7<br>
+                - CPU: 1 GHz Pentium III o AMD Athlon<br>
+                - RAM: 256 MB<br>
+                - Gráficos: 64 MB VRAM<br>
+                - Espacio libre: 3.6 GB
             </div>
             <a class="download-btn" href="https://www.mediafire.com/file/mplrdftfwxmd0x0/GTA+San+Andreas+By+Sajord.zip/file" target="_blank">DESCARGAR</a>
         </div>
@@ -228,59 +155,65 @@
 
     <!-- Hollow Knight -->
     <div class="game-card">
-        <div class="game-thumb">Sin imagen</div>
+        <div class="game-thumb">
+            <img src="imgs/hollowknight.jpg" alt="Hollow Knight">
+        </div>
         <div class="game-info">
             <div class="game-title">Hollow Knight</div>
             <div class="game-desc">
-                Metroidvania atmosférico con exploración profunda, jefes desafiantes y un mundo enorme lleno de secretos.
+                Aventura y acción en 2D en un mundo subterráneo lleno de criaturas y secretos. Explora, combate y desbloquea habilidades.
             </div>
             <div class="game-req">
                 <b>Requisitos mínimos:</b><br>
-                OS: Windows 7+<br>
-                CPU: 2.0 GHz<br>
-                RAM: 4 GB<br>
-                GPU: Intel HD 3000<br>
-                Espacio: 9 GB
+                - OS: Windows 7 / 8 / 10<br>
+                - CPU: 2 GHz Dual-Core<br>
+                - RAM: 4 GB<br>
+                - Gráficos: Tarjeta compatible con DirectX 9.0c y Shader Model 3.0<br>
+                - Espacio libre: 5 GB
             </div>
             <a class="download-btn" href="https://www.mediafire.com/file/pjm55aus53vxi2b/Hollow_Knight_By_Sajord.rar/file" target="_blank">DESCARGAR</a>
         </div>
     </div>
 
-    <!-- Hollow Knight Silksong -->
+    <!-- Hollow Knight: Silksong -->
     <div class="game-card">
-        <div class="game-thumb">Sin imagen</div>
+        <div class="game-thumb">
+            <img src="imgs/silksong.jpg" alt="Hollow Knight Silksong">
+        </div>
         <div class="game-info">
             <div class="game-title">Hollow Knight: Silksong</div>
             <div class="game-desc">
-                Secuela enfocada en velocidad, verticalidad y combate fluido protagonizado por Hornet, expandiendo el universo de Hallownest.
+                Secuela de Hollow Knight. Explora nuevos territorios, enfrenta nuevos enemigos y domina nuevas habilidades.
             </div>
             <div class="game-req">
-                <b>Requisitos mínimos (estimados):</b><br>
-                OS: Windows 7+<br>
-                CPU: 2.4 GHz<br>
-                RAM: 4 GB<br>
-                GPU: Intel HD 4000 o superior<br>
-                Espacio: 10 GB
+                <b>Requisitos mínimos:</b><br>
+                - OS: Windows 7 / 8 / 10<br>
+                - CPU: 2 GHz Dual-Core<br>
+                - RAM: 4 GB<br>
+                - Gráficos: Tarjeta compatible con DirectX 9.0c y Shader Model 3.0<br>
+                - Espacio libre: 5 GB
             </div>
             <a class="download-btn" href="https://www.mediafire.com/file/e5fmeb5bse1egxo/Hollow_Knight_Silksong_By_Sajord.rar/file" target="_blank">DESCARGAR</a>
         </div>
     </div>
 
-    <!-- Age of Empires 2 -->
+    <!-- Age Of Empires II -->
     <div class="game-card">
-        <div class="game-thumb">Sin imagen</div>
+        <div class="game-thumb">
+            <img src="imgs/aoe2.jpg" alt="Age Of Empires II">
+        </div>
         <div class="game-info">
-            <div class="game-title">Age of Empires II</div>
+            <div class="game-title">Age Of Empires II</div>
             <div class="game-desc">
-                Estrategia en tiempo real clásica donde gestionas civilizaciones históricas, construyes ejércitos y conquistas reinos.
+                Estrategia en tiempo real en la que construyes civilizaciones, entrenas ejércitos y conquistas enemigos.
             </div>
             <div class="game-req">
                 <b>Requisitos mínimos:</b><br>
-                OS: Windows XP/Vista<br>
-                CPU: 1.2 GHz<br>
-                RAM: 1 GB<br>
-                GPU: DirectX 9<br>
-                Espacio: 2 GB
+                - OS: Windows XP / Vista / 7 / 8 / 10<br>
+                - CPU: 1.2 GHz<br>
+                - RAM: 1 GB<br>
+                - Gráficos: 32 MB VRAM<br>
+                - Espacio libre: 2 GB
             </div>
             <a class="download-btn" href="https://www.mediafire.com/file/wt50r326atd6u27/A.O.E_2_By_Sajord.rar/file" target="_blank">DESCARGAR</a>
         </div>
@@ -288,19 +221,21 @@
 
     <!-- Undertale -->
     <div class="game-card">
-        <div class="game-thumb">Sin imagen</div>
+        <div class="game-thumb">
+            <img src="imgs/undertale.jpg" alt="UNDERTALE">
+        </div>
         <div class="game-info">
-            <div class="game-title">Undertale</div>
+            <div class="game-title">UNDERTALE</div>
             <div class="game-desc">
-                RPG único donde puedes combatir o perdonar a tus enemigos, con historia emocional y decisiones que afectan el final.
+                RPG único donde tus decisiones afectan la historia. Explora, combate y conoce personajes entrañables.
             </div>
             <div class="game-req">
                 <b>Requisitos mínimos:</b><br>
-                OS: Windows XP/Vista/7<br>
-                CPU: 2.0 GHz<br>
-                RAM: 2 GB<br>
-                GPU: Cualquiera<br>
-                Espacio: 200 MB
+                - OS: Windows XP / Vista / 7 / 8 / 10<br>
+                - CPU: 2 GHz<br>
+                - RAM: 2 GB<br>
+                - Gráficos: 128 MB VRAM<br>
+                - Espacio libre: 200 MB
             </div>
             <a class="download-btn" href="https://www.mediafire.com/file/neikp8bxmcshwec/UNDER._By_Sajord.rar/file" target="_blank">DESCARGAR</a>
         </div>
@@ -308,49 +243,65 @@
 
     <!-- Castle Crashers -->
     <div class="game-card">
-        <div class="game-thumb">Sin imagen</div>
+        <div class="game-thumb">
+            <img src="imgs/castlecrashers.jpg" alt="Castle Crashers">
+        </div>
         <div class="game-info">
-            <div class="game-title">Castle Crashers (con DLC)</div>
+            <div class="game-title">Castle Crashers (Con Su DLC)</div>
             <div class="game-desc">
-                Beat ’em up cooperativo con combates divertidos, personajes desbloqueables y humor característico.
+                Juego de acción y aventuras en 2D para varios jugadores. Lucha, sube de nivel y desbloquea personajes y armas.
             </div>
             <div class="game-req">
                 <b>Requisitos mínimos:</b><br>
-                OS: Windows XP+<br>
-                CPU: 2.0 GHz<br>
-                RAM: 1 GB<br>
-                GPU: DirectX 9<br>
-                Espacio: 250 MB
+                - OS: Windows XP / Vista / 7 / 8 / 10<br>
+                - CPU: 1.8 GHz<br>
+                - RAM: 2 GB<br>
+                - Gráficos: 128 MB VRAM<br>
+                - Espacio libre: 2 GB
             </div>
             <a class="download-btn" href="https://www.mediafire.com/file/zuyc6whs4vmrfhv/Castle+Crashers+By+Sajord.zip/file" target="_blank">DESCARGAR</a>
         </div>
     </div>
 
-    <!-- The Forest -->
+    <!-- Terraria -->
     <div class="game-card">
-        <div class="game-thumb">Sin imagen</div>
+        <div class="game-thumb">
+            <img src="imgs/terraria.jpg" alt="Terraria">
+        </div>
         <div class="game-info">
-            <div class="game-title">The Forest</div>
+            <div class="game-title">Terraria</div>
             <div class="game-desc">
-                Supervivencia en una isla llena de mutantes donde debes construir, cazar, explorar y descubrir el misterio del lugar.
+                Juego de acción, aventura y sandbox en 2D. Explora, construye, combate monstruos y descubre secretos.
             </div>
             <div class="game-req">
                 <b>Requisitos mínimos:</b><br>
-                OS: Windows 7<br>
-                CPU: Intel Core 2 Duo<br>
-                RAM: 4 GB<br>
-                GPU: NVIDIA GeForce 8800<br>
-                Espacio: 5 GB
+                - OS: Windows XP / Vista / 7 / 8 / 10<br>
+                - CPU: 2.0 GHz<br>
+                - RAM: 2.5 GB<br>
+                - Gráficos: 128 MB VRAM compatible con Shader Model 2.0+<br>
+                - Espacio libre: ~200 MB
             </div>
-            <a class="download-btn" href="https://www.mediafire.com/file/v74r4gftu2zxs5v/The_Forest_By_Sajord.rar/file" target="_blank">DESCARGAR</a>
+            <a class="download-btn" href="https://www.mediafire.com/file/izmaa3vpe8fz38k/T.RR.A_1.4.4.9.rar/file" target="_blank">DESCARGAR</a>
         </div>
     </div>
 
-</div>
-
-<footer>
-    © 2025 GameZone - Todos los derechos reservados.
-</footer>
-
-</body>
-</html>
+    <!-- Stardew Valley -->
+    <div class="game-card">
+        <div class="game-thumb">
+            <img src="imgs/stardewvalley.jpg" alt="Stardew Valley">
+        </div>
+        <div class="game-info">
+            <div class="game-title">Stardew Valley</div>
+            <div class="game-desc">
+                Simulador de granja y vida rural. Cultiva, cría animales, pesca, explora minas y socializa en el pueblo.
+            </div>
+            <div class="game-req">
+                <b>Requisitos mínimos:</b><br>
+                - OS: Windows 7 / Vista o superior<br>
+                - CPU: 2.0 GHz<br>
+                - RAM: 2 GB RAM<br>
+                - Gráficos: 256 MB VRAM, Shader Model 3.0+<br>
+                - DirectX: 10<br>
+                - Espacio libre: 500 MB
+            </div>
+            <a class="download-btn" href="https://www.mediafire.com/file/xg1eezjp787zf8f/STAR._VALLEY_By_S
