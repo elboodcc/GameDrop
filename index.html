@@ -2,19 +2,20 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GameZone - Red Edition</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
+        
         body { 
             background: radial-gradient(circle at top, #281616 0%, #050608 45%, #020203 100%);
             font-family: 'Roboto', sans-serif; 
             color: #fff; 
+            line-height: 1.6;
         }
 
-        a { text-decoration: none; color: inherit; }
-
+        /* BARRA DE NAVEGACIÓN */
         nav { 
             background: rgba(14, 9, 9, 0.95); 
             padding: 15px 30px; 
@@ -28,27 +29,41 @@
             border-bottom: 1px solid #3b1f1f;
             backdrop-filter: blur(8px);
         }
-        nav .logo { 
-            color: #ff5b5b; 
-            font-size: 28px; 
-            font-weight: 700; 
-            text-shadow: 0 0 10px #ff000080;
-        }
-        nav ul { list-style: none; display: flex; gap: 25px; }
-        nav ul li a { 
-            color: #c7c7c7; 
-            font-weight: 500; 
-            transition: color 0.3s; 
-            font-size: 14px;
-        }
+        nav .logo { color: #ff5b5b; font-size: 28px; font-weight: 700; text-shadow: 0 0 10px #ff000080; }
+        nav ul { list-style: none; display: flex; gap: 20px; }
+        nav ul li a { color: #c7c7c7; font-weight: 500; transition: 0.3s; font-size: 14px; }
         nav ul li a:hover { color: #ff5b5b; text-shadow: 0 0 8px #ff5b5b; }
 
+        /* BUSCADOR */
+        .search-container {
+            max-width: 1300px;
+            margin: 30px auto 10px;
+            padding: 0 30px;
+        }
+        #gameSearch {
+            width: 100%;
+            padding: 15px 25px;
+            border-radius: 50px;
+            border: 1px solid #462c2c;
+            background: rgba(20, 10, 10, 0.8);
+            color: white;
+            outline: none;
+            font-size: 16px;
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.05);
+            transition: 0.3s;
+        }
+        #gameSearch:focus {
+            border-color: #ff3939;
+            box-shadow: 0 0 20px rgba(255, 57, 57, 0.2);
+        }
+
+        /* CONTENEDOR DE JUEGOS */
         .container { 
-            padding: 40px 30px; 
+            padding: 20px 20px 40px; 
             display: grid; 
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-            gap: 35px; 
-            max-width: 1300px;
+            gap: 30px; 
+            max-width: 1400px;
             margin: 0 auto;
         }
 
@@ -56,72 +71,56 @@
             background: radial-gradient(circle at top left,#1c1414,#0a0707 55%,#050606 100%); 
             border-radius: 18px; 
             overflow: hidden; 
-            box-shadow: 0 0 0 1px #3b1f1f, 0 0 18px #ff000015; 
-            transition: transform 0.25s, box-shadow 0.25s, border 0.25s; 
+            box-shadow: 0 0 0 1px #3b1f1f, 0 0 15px rgba(255,0,0,0.1); 
+            transition: all 0.3s ease; 
             cursor: pointer;
             border: 1px solid #281818;
         }
         .game-card:hover { 
-            transform: translateY(-10px); 
-            box-shadow: 0 0 22px #ff393950;
+            transform: translateY(-8px); 
+            box-shadow: 0 0 25px rgba(255, 57, 57, 0.3);
             border-color: #ff3939;
         }
-        .game-thumb img { 
-            width: 100%; 
-            height: 190px; 
-            object-fit: cover; 
-            transition: transform 0.3s; 
-        }
-        .game-card:hover .game-thumb img { transform: scale(1.06); filter: saturate(1.3); }
+        .game-thumb img { width: 100%; height: 200px; object-fit: cover; transition: 0.4s; }
+        .game-card:hover .game-thumb img { transform: scale(1.08); filter: saturate(1.2); }
 
-        .game-info { padding: 18px; }
-        .game-title { font-size: 20px; margin-bottom: 8px; color: #ff5b5b; font-weight: 700; }
-        .game-desc { font-size: 13px; color: #c0c0c0; margin-bottom: 12px; line-height: 1.45; }
-        .game-req { display: none; } /* Se muestra solo en el modal */
+        .game-info { padding: 20px; }
+        .game-title { font-size: 20px; color: #ff5b5b; font-weight: 700; margin-bottom: 8px; }
+        .game-desc { font-size: 13px; color: #b0b0b0; height: 40px; overflow: hidden; text-overflow: ellipsis; }
+        
+        .game-req-data { display: none; }
 
-        footer { 
-            text-align: center; 
-            padding: 25px; 
-            color: #777; 
-            margin-top: 40px; 
-            border-top: 1px solid #222; 
-            background: #070505;
-        }
-
-        /* MODAL RED DESIGN */
+        /* MODAL */
         .modal-overlay {
             position: fixed; inset: 0;
-            background: rgba(0,0,0,0.85);
-            backdrop-filter: blur(8px);
+            background: rgba(0,0,0,0.9);
+            backdrop-filter: blur(10px);
             display: none; align-items: center; justify-content: center;
-            z-index: 999;
+            z-index: 1000; padding: 20px;
         }
         .modal {
-            width: 90%; max-width: 850px;
-            background: radial-gradient(circle at top,#251818,#070505 60%,#020302 100%);
-            border-radius: 22px; padding: 25px;
-            border: 1px solid #462c2c;
-            box-shadow: 0 0 25px #ff000040;
-            position: relative; animation: modalIn .25s ease-out;
+            width: 100%; max-width: 800px;
+            background: #0d0d0d;
+            border-radius: 20px; border: 1px solid #462c2c;
+            position: relative; overflow: hidden;
+            animation: fadeIn 0.3s ease;
         }
-        @keyframes modalIn { from { transform: scale(.85); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-        .modal-close { position: absolute; top: 10px; right: 15px; font-size: 28px; cursor: pointer; color: #ff5b5b; }
-        .modal-body { display: flex; gap: 20px; flex-wrap: wrap; }
-        .modal-left { flex: 1 1 250px; }
-        .modal-left img { width: 100%; border-radius: 16px; box-shadow: 0 0 15px #000; }
-        .modal-right { flex: 2 1 300px; }
-        .modal-title { font-size: 26px; color: #ff5b5b; font-weight: 700; margin-bottom: 5px; }
-        .modal-rating { color: #ffd86b; margin-bottom: 15px; font-weight: bold; }
-        .modal-req-title { color: #ff8181; font-size: 14px; font-weight: bold; margin-bottom: 5px; }
-        .modal-req-content { background: #0a0606; padding: 12px; border-radius: 10px; border-left: 3px solid #ff3939; color: #dca8a8; font-size: 13px; margin-bottom: 15px; }
-        .modal-download a {
-            display: inline-block; padding: 12px 25px; border-radius: 50px;
-            background: linear-gradient(90deg,#ff3939,#c60000);
-            color: #fff; font-weight: 700; transition: 0.2s;
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .modal-close { position: absolute; top: 15px; right: 20px; font-size: 30px; cursor: pointer; color: #ff5b5b; z-index: 10; }
+        .modal-content { display: flex; flex-wrap: wrap; }
+        .modal-img-side { flex: 1 1 300px; }
+        .modal-img-side img { width: 100%; height: 100%; object-fit: cover; }
+        .modal-info-side { flex: 1.2 1 300px; padding: 30px; }
+        .modal-title { font-size: 28px; color: #ff5b5b; margin-bottom: 10px; }
+        .modal-rating { color: #ffd86b; font-weight: bold; margin-bottom: 15px; }
+        .modal-req-box { background: #1a1111; padding: 15px; border-radius: 10px; border-left: 4px solid #ff3939; margin-bottom: 20px; font-size: 13px; color: #dca8a8; }
+        .btn-download {
+            display: inline-block; padding: 12px 30px; background: linear-gradient(90deg, #ff3939, #990000);
+            color: #fff; font-weight: bold; border-radius: 50px; transition: 0.3s;
         }
-        .modal-download a:hover { transform: scale(1.05); box-shadow: 0 0 20px #ff3939; }
+        .btn-download:hover { transform: scale(1.05); box-shadow: 0 0 20px #ff3939; }
 
-        @media (max-width: 700px) { .modal-body { flex-direction: column; } }
+        footer { text-align: center; padding: 40px; color: #444; font-size: 12px; border-top: 1px solid #1a1a1a; }
     </style>
 </head>
 <body>
@@ -129,203 +128,112 @@
 <nav>
     <div class="logo">GameZone</div>
     <ul>
-        <li><a href="#">Inicio</a></li>
-        <li><a href="#">Juegos</a></li>
-        <li><a href="#">Contacto</a></li>
+        <li><a href="#">INICIO</a></li>
+        <li><a href="#">PC GAMES</a></li>
+        <li><a href="#">CONTACTO</a></li>
     </ul>
 </nav>
 
-<div class="container">
-
-    <div class="game-card" data-dl="https://www.mediafire.com/file/5a0j760kvu8c92j/UK_-.rar/file">
-        <div class="game-thumb"><img src="imgs/ultrakill.jpg" alt="ULTRAKILL"></div>
-        <div class="game-info">
-            <div class="game-title">ULTRAKILL</div>
-            <div class="game-desc">Shooter frenético en primera persona con estética retro.</div>
-            <div class="game-req">RAM: 4 GB<br>GPU: GTX 560<br>Espacio: 3 GB</div>
-        </div>
-    </div>
-
-    <div class="game-card" data-dl="https://www.mediafire.com/file/lkaeeuyx93jjmba/LFORD_1.rar/file">
-        <div class="game-thumb"><img src="imgs/left4dead.jpg" alt="Left 4 Dead"></div>
-        <div class="game-info">
-            <div class="game-title">Left 4 Dead</div>
-            <div class="game-desc">Sobrevive al apocalipsis zombie en este cooperativo legendario.</div>
-            <div class="game-req">RAM: 1 GB<br>GPU: 128 MB VRAM<br>Espacio: 7.5 GB</div>
-        </div>
-    </div>
-
-    <div class="game-card" data-dl="#">
-        <div class="game-thumb"><img src="imgs/fnaf.jpg" alt="Five Nights at Freddy's"></div>
-        <div class="game-info">
-            <div class="game-title">Five Nights at Freddy's</div>
-            <div class="game-desc">¿Podrás sobrevivir cinco noches en la pizzería?</div>
-            <div class="game-req">RAM: 2 GB<br>GPU: 1 GB VRAM<br>Espacio: 250 MB</div>
-        </div>
-    </div>
-
-    <div class="game-card" data-dl="#">
-        <div class="game-thumb"><img src="imgs/pvz.jpg" alt="Plantas Vs Zombies Replanted"></div>
-        <div class="game-info">
-            <div class="game-title">Plantas Vs Zombies Replanted</div>
-            <div class="game-desc">Defiende tu jardín de las hordas de zombies.</div>
-            <div class="game-req">RAM: 1 GB<br>GPU: 128 MB VRAM<br>Espacio: 100 MB</div>
-        </div>
-    </div>
-
-    <div class="game-card" data-dl="https://www.mediafire.com/file/mplrdftfwxmd0x0/GTA+San+Andreas+By+Sajord.zip/file">
-        <div class="game-thumb"><img src="imgs/gta_sa.jpg" alt="GTA San Andreas"></div>
-        <div class="game-info">
-            <div class="game-title">GTA San Andreas</div>
-            <div class="game-desc">El clásico mundo abierto de Rockstar Games.</div>
-            <div class="game-req">RAM: 256 MB<br>GPU: 64 MB VRAM<br>Espacio: 3.6 GB</div>
-        </div>
-    </div>
-
-    <div class="game-card" data-dl="https://www.mediafire.com/file/pjm55aus53vxi2b/Hollow_Knight_By_Sajord.rar/file">
-        <div class="game-thumb"><img src="imgs/hollowknight.jpg" alt="Hollow Knight"></div>
-        <div class="game-info">
-            <div class="game-title">Hollow Knight</div>
-            <div class="game-desc">Explora un vasto reino en ruinas lleno de misterios.</div>
-            <div class="game-req">RAM: 4 GB<br>GPU: 1 GB VRAM<br>Espacio: 9 GB</div>
-        </div>
-    </div>
-
-    <div class="game-card" data-dl="#">
-        <div class="game-thumb"><img src="imgs/aoe2.jpg" alt="Age of Empires II"></div>
-        <div class="game-info">
-            <div class="game-title">Age of Empires II</div>
-            <div class="game-desc">Estrategia en tiempo real en la época medieval.</div>
-            <div class="game-req">RAM: 4 GB<br>GPU: 512 MB VRAM<br>Espacio: 5 GB</div>
-        </div>
-    </div>
-
-    <div class="game-card" data-dl="#">
-        <div class="game-thumb"><img src="imgs/undertale.jpg" alt="Undertale"></div>
-        <div class="game-info">
-            <div class="game-title">Undertale</div>
-            <div class="game-desc">Un RPG donde no tienes que matar a nadie.</div>
-            <div class="game-req">RAM: 2 GB<br>GPU: 128 MB VRAM<br>Espacio: 200 MB</div>
-        </div>
-    </div>
-
-    <div class="game-card" data-dl="https://www.mediafire.com/file/zuyc6whs4vmrfhv/Castle+Crashers+By_Sajord.zip/file">
-        <div class="game-thumb"><img src="imgs/castle_crashers.jpg" alt="Castle Crashers"></div>
-        <div class="game-info">
-            <div class="game-title">Castle Crashers</div>
-            <div class="game-desc">Aventura arcade de lucha en 2D y mucha acción.</div>
-            <div class="game-req">RAM: 1 GB<br>GPU: 128 MB VRAM<br>Espacio: 500 MB</div>
-        </div>
-    </div>
-
-    <div class="game-card" data-dl="#">
-        <div class="game-thumb"><img src="imgs/the_forest.jpg" alt="The Forest"></div>
-        <div class="game-info">
-            <div class="game-title">The Forest</div>
-            <div class="game-desc">Sobrevive a un accidente de avión en un bosque hostil.</div>
-            <div class="game-req">RAM: 4 GB<br>GPU: GTX 560<br>Espacio: 5 GB</div>
-        </div>
-    </div>
-
-    <div class="game-card" data-dl="#">
-        <div class="game-thumb"><img src="imgs/terraria.jpg" alt="Terraria"></div>
-        <div class="game-info">
-            <div class="game-title">Terraria</div>
-            <div class="game-desc">Cava, lucha, explora y construye en este mundo 2D.</div>
-            <div class="game-req">RAM: 4 GB<br>GPU: 128 MB VRAM<br>Espacio: 200 MB</div>
-        </div>
-    </div>
-
-    <div class="game-card" data-dl="#">
-        <div class="game-thumb"><img src="imgs/stardew.jpg" alt="Stardew Valley"></div>
-        <div class="game-info">
-            <div class="game-title">Stardew Valley</div>
-            <div class="game-desc">Crea la granja de tus sueños en este simulador rural.</div>
-            <div class="game-req">RAM: 2 GB<br>GPU: 256 MB VRAM<br>Espacio: 500 MB</div>
-        </div>
-    </div>
-
-    <div class="game-card" data-dl="#">
-        <div class="game-thumb"><img src="imgs/zomboid.jpg" alt="Project Zomboid"></div>
-        <div class="game-info">
-            <div class="game-title">Project Zomboid</div>
-            <div class="game-desc">El simulador de supervivencia zombie definitivo.</div>
-            <div class="game-req">RAM: 8 GB<br>GPU: 2 GB VRAM<br>Espacio: 5 GB</div>
-        </div>
-    </div>
-
-    <div class="game-card" data-dl="#">
-        <div class="game-thumb"><img src="imgs/gmod.jpg" alt="Garry's Mod"></div>
-        <div class="game-info">
-            <div class="game-title">Garry's Mod</div>
-            <div class="game-desc">Un sandbox físico donde el límite es tu imaginación.</div>
-            <div class="game-req">RAM: 4 GB<br>GPU: 512 MB VRAM<br>Espacio: 5 GB</div>
-        </div>
-    </div>
-
+<div class="search-container">
+    <input type="text" id="gameSearch" placeholder="Escribe el nombre del juego que buscas...">
 </div>
 
+<div class="container" id="gameGrid">
+    <div class="game-card" data-link="https://www.mediafire.com/file/5a0j760kvu8c92j/UK_-.rar/file">
+        <div class="game-thumb"><img src="imgs/ultrakill.jpg" alt="ULTRAKILL"></div>
+        <div class="game-info">
+            <h3 class="game-title">ULTRAKILL</h3>
+            <p class="game-desc">Shooter frenético retro con mucha sangre y velocidad.</p>
+            <div class="game-req-data">OS: Win 7+ <br> RAM: 4GB <br> GPU: GTX 560</div>
+        </div>
+    </div>
+
+    <div class="game-card" data-link="https://www.mediafire.com/file/lkaeeuyx93jjmba/LFORD_1.rar/file">
+        <div class="game-thumb"><img src="imgs/left4dead.jpg" alt="Left 4 Dead"></div>
+        <div class="game-info">
+            <h3 class="game-title">Left 4 Dead</h3>
+            <p class="game-desc">Acción cooperativa contra hordas infinitas de zombies.</p>
+            <div class="game-req-data">OS: Win XP/7 <br> RAM: 2GB <br> GPU: 128MB VRAM</div>
+        </div>
+    </div>
+
+    <div class="game-card" data-link="https://www.mediafire.com/file/mplrdftfwxmd0x0/GTA+San+Andreas+By+Sajord.zip/file">
+        <div class="game-thumb"><img src="imgs/gta_sa.jpg" alt="GTA SA"></div>
+        <div class="game-info">
+            <h3 class="game-title">GTA San Andreas</h3>
+            <p class="game-desc">El clásico mundo abierto más famoso de la historia.</p>
+            <div class="game-req-data">OS: Win 10 <br> RAM: 1GB <br> GPU: 128MB VRAM</div>
+        </div>
+    </div>
+
+    <div class="game-card" data-link="LINK_DE_TERRARIA">
+        <div class="game-thumb"><img src="imgs/terraria.jpg" alt="Terraria"></div>
+        <div class="game-info">
+            <h3 class="game-title">Terraria</h3>
+            <p class="game-desc">Explora, construye y lucha en un mundo infinito.</p>
+            <div class="game-req-data">RAM: 4GB <br> GPU: 256MB VRAM <br> Espacio: 200MB</div>
+        </div>
+    </div>
+
+    <div class="game-card" data-link="https://www.mediafire.com/file/zuyc6whs4vmrfhv/Castle+Crashers+By_Sajord.zip/file">
+        <div class="game-thumb"><img src="imgs/castle_crashers.jpg" alt="Castle Crashers"></div>
+        <div class="game-info">
+            <h3 class="game-title">Castle Crashers</h3>
+            <p class="game-desc">Lucha medieval arcade llena de risas y jefes locos.</p>
+            <div class="game-req-data">OS: Win 7 <br> RAM: 1GB <br> GPU: 256MB VRAM</div>
+        </div>
+    </div>
+
+    </div>
+
 <footer>
-    © 2026 GameZone - Red Edition. Todos los juegos restaurados.
+    © 2026 GAMEZONE - RED EDITION
 </footer>
 
-<div class="modal-overlay" id="modalOverlay">
+<div class="modal-overlay" id="overlay">
     <div class="modal">
-        <div class="modal-close" id="modalClose">&times;</div>
-        <div class="modal-body">
-            <div class="modal-left">
-                <img id="modalImg" src="" alt="">
-            </div>
-            <div class="modal-right">
-                <div class="modal-title" id="modalTitle"></div>
-                <div class="modal-rating" id="modalRating"></div>
-                <div class="modal-desc" id="modalDesc"></div>
-                <div class="modal-req-title">REQUISITOS DEL SISTEMA</div>
-                <div class="modal-req-content" id="modalReq"></div>
-                <div class="modal-download">
-                    <a id="modalLink" href="#" target="_blank">DESCARGAR AHORA</a>
-                </div>
+        <span class="modal-close" id="closeBtn">&times;</span>
+        <div class="modal-content">
+            <div class="modal-img-side"><img id="mImg" src=""></div>
+            <div class="modal-info-side">
+                <h2 class="modal-title" id="mTitle"></h2>
+                <div class="modal-rating">⭐ Valoración: 4.8 / 5.0</div>
+                <p id="mDesc" style="margin-bottom: 20px; color: #ccc;"></p>
+                <div class="modal-req-box" id="mReq"></div>
+                <a href="#" class="btn-download" id="mLink" target="_blank">DESCARGAR AHORA</a>
             </div>
         </div>
     </div>
 </div>
 
 <script>
-    const ratings = {
-        "ULTRAKILL": 4.9, "Left 4 Dead": 4.8, "Five Nights at Freddy's": 4.5,
-        "Plantas Vs Zombies Replanted": 4.7, "GTA San Andreas": 4.9,
-        "Hollow Knight": 4.9, "Age of Empires II": 4.9, "Undertale": 4.8,
-        "Castle Crashers": 4.7, "The Forest": 4.6, "Terraria": 4.8,
-        "Stardew Valley": 4.9, "Project Zomboid": 4.7, "Garry's Mod": 4.7
-    };
+    // LÓGICA DE BÚSQUEDA
+    const searchInput = document.getElementById('gameSearch');
+    const cards = document.querySelectorAll('.game-card');
 
-    const overlay = document.getElementById('modalOverlay');
-    const modalImg = document.getElementById('modalImg');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalDesc = document.getElementById('modalDesc');
-    const modalReq = document.getElementById('modalReq');
-    const modalLink = document.getElementById('modalLink');
-    const modalRating = document.getElementById('modalRating');
-    const modalClose = document.getElementById('modalClose');
+    searchInput.addEventListener('input', () => {
+        const filter = searchInput.value.toLowerCase();
+        cards.forEach(card => {
+            const title = card.querySelector('.game-title').innerText.toLowerCase();
+            card.style.display = title.includes(filter) ? "block" : "none";
+        });
+    });
 
-    document.querySelectorAll('.game-card').forEach(card => {
+    // LÓGICA DE MODAL
+    const overlay = document.getElementById('overlay');
+    cards.forEach(card => {
         card.addEventListener('click', () => {
-            const title = card.querySelector('.game-title').textContent;
-            modalImg.src = card.querySelector('img').src;
-            modalTitle.textContent = title;
-            modalDesc.textContent = card.querySelector('.game-desc').textContent;
-            modalReq.innerHTML = card.querySelector('.game-req').innerHTML;
-            modalLink.href = card.getAttribute('data-dl');
-
-            const r = ratings[title] || 4.5;
-            modalRating.textContent = `⭐ Valoración: ${r}`;
-
+            document.getElementById('mTitle').innerText = card.querySelector('.game-title').innerText;
+            document.getElementById('mImg').src = card.querySelector('img').src;
+            document.getElementById('mDesc').innerText = card.querySelector('.game-desc').innerText;
+            document.getElementById('mReq').innerHTML = card.querySelector('.game-req-data').innerHTML;
+            document.getElementById('mLink').href = card.getAttribute('data-link');
             overlay.style.display = 'flex';
         });
     });
 
-    modalClose.addEventListener('click', () => overlay.style.display = 'none');
-    window.addEventListener('click', (e) => { if (e.target === overlay) overlay.style.display = 'none'; });
+    document.getElementById('closeBtn').onclick = () => overlay.style.display = 'none';
+    window.onclick = (e) => { if(e.target == overlay) overlay.style.display = 'none'; }
 </script>
 
 </body>
