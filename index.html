@@ -34,7 +34,7 @@
         nav ul li a { color: #c7c7c7; font-weight: 500; transition: 0.3s; font-size: 14px; }
         nav ul li a:hover { color: #ff5b5b; text-shadow: 0 0 8px #ff5b5b; }
 
-        /* BUSCADOR */
+        /* BUSCADOR ESTILO RED */
         .search-container {
             max-width: 1300px;
             margin: 30px auto 10px;
@@ -86,8 +86,7 @@
 
         .game-info { padding: 20px; }
         .game-title { font-size: 20px; color: #ff5b5b; font-weight: 700; margin-bottom: 8px; }
-        .game-desc { font-size: 13px; color: #b0b0b0; height: 40px; overflow: hidden; text-overflow: ellipsis; }
-        
+        .game-desc { font-size: 13px; color: #b0b0b0; height: 40px; overflow: hidden; }
         .game-req-data { display: none; }
 
         /* MODAL */
@@ -135,16 +134,17 @@
 </nav>
 
 <div class="search-container">
-    <input type="text" id="gameSearch" placeholder="Escribe el nombre del juego que buscas...">
+    <input type="text" id="gameSearch" placeholder="Escribe el nombre del juego para buscar...">
 </div>
 
 <div class="container" id="gameGrid">
+
     <div class="game-card" data-link="https://www.mediafire.com/file/5a0j760kvu8c92j/UK_-.rar/file">
         <div class="game-thumb"><img src="imgs/ultrakill.jpg" alt="ULTRAKILL"></div>
         <div class="game-info">
             <h3 class="game-title">ULTRAKILL</h3>
             <p class="game-desc">Shooter frenético retro con mucha sangre y velocidad.</p>
-            <div class="game-req-data">OS: Win 7+ <br> RAM: 4GB <br> GPU: GTX 560</div>
+            <div class="game-req-data">OS: Win 7+ | RAM: 4GB | GPU: GTX 560</div>
         </div>
     </div>
 
@@ -152,8 +152,8 @@
         <div class="game-thumb"><img src="imgs/left4dead.jpg" alt="Left 4 Dead"></div>
         <div class="game-info">
             <h3 class="game-title">Left 4 Dead</h3>
-            <p class="game-desc">Acción cooperativa contra hordas infinitas de zombies.</p>
-            <div class="game-req-data">OS: Win XP/7 <br> RAM: 2GB <br> GPU: 128MB VRAM</div>
+            <p class="game-desc">Cooperativo clásico contra hordas de zombies.</p>
+            <div class="game-req-data">OS: Win XP/7 | RAM: 2GB | GPU: 128MB VRAM</div>
         </div>
     </div>
 
@@ -161,17 +161,17 @@
         <div class="game-thumb"><img src="imgs/gta_sa.jpg" alt="GTA SA"></div>
         <div class="game-info">
             <h3 class="game-title">GTA San Andreas</h3>
-            <p class="game-desc">El clásico mundo abierto más famoso de la historia.</p>
-            <div class="game-req-data">OS: Win 10 <br> RAM: 1GB <br> GPU: 128MB VRAM</div>
+            <p class="game-desc">El mundo abierto más icónico de Rockstar Games.</p>
+            <div class="game-req-data">OS: Win 10 | RAM: 1GB | Espacio: 3.6GB</div>
         </div>
     </div>
 
-    <div class="game-card" data-link="LINK_DE_TERRARIA">
+    <div class="game-card" data-link="#">
         <div class="game-thumb"><img src="imgs/terraria.jpg" alt="Terraria"></div>
         <div class="game-info">
             <h3 class="game-title">Terraria</h3>
-            <p class="game-desc">Explora, construye y lucha en un mundo infinito.</p>
-            <div class="game-req-data">RAM: 4GB <br> GPU: 256MB VRAM <br> Espacio: 200MB</div>
+            <p class="game-desc">Cava, lucha, explora y construye en este mundo 2D.</p>
+            <div class="game-req-data">RAM: 4GB | Espacio: 200MB</div>
         </div>
     </div>
 
@@ -179,15 +179,96 @@
         <div class="game-thumb"><img src="imgs/castle_crashers.jpg" alt="Castle Crashers"></div>
         <div class="game-info">
             <h3 class="game-title">Castle Crashers</h3>
-            <p class="game-desc">Lucha medieval arcade llena de risas y jefes locos.</p>
-            <div class="game-req-data">OS: Win 7 <br> RAM: 1GB <br> GPU: 256MB VRAM</div>
+            <p class="game-desc">Acción arcade medieval y mucha diversión cooperativa.</p>
+            <div class="game-req-data">RAM: 1GB | GPU: 256MB VRAM</div>
         </div>
     </div>
 
+    <div class="game-card" data-link="#">
+        <div class="game-thumb"><img src="imgs/fnaf.jpg" alt="FNAF"></div>
+        <div class="game-info">
+            <h3 class="game-title">Five Nights at Freddy's</h3>
+            <p class="game-desc">Sobrevive al terror de los animatrónicos.</p>
+            <div class="game-req-data">RAM: 2GB | Espacio: 250MB</div>
+        </div>
     </div>
 
+    <div class="game-card" data-link="#">
+        <div class="game-thumb"><img src="imgs/pvz.jpg" alt="PVZ"></div>
+        <div class="game-info">
+            <h3 class="game-title">Plantas Vs Zombies</h3>
+            <p class="game-desc">Defiende tu jardín con las plantas más poderosas.</p>
+            <div class="game-req-data">RAM: 1GB | Procesador: 1.2GHz</div>
+        </div>
+    </div>
+
+    <div class="game-card" data-link="https://www.mediafire.com/file/pjm55aus53vxi2b/Hollow_Knight_By_Sajord.rar/file">
+        <div class="game-thumb"><img src="imgs/hollowknight.jpg" alt="Hollow Knight"></div>
+        <div class="game-info">
+            <h3 class="game-title">Hollow Knight</h3>
+            <p class="game-desc">Un metroidvania épico en un reino de insectos.</p>
+            <div class="game-req-data">RAM: 4GB | GPU: 1GB VRAM</div>
+        </div>
+    </div>
+
+    <div class="game-card" data-link="#">
+        <div class="game-thumb"><img src="imgs/aoe2.jpg" alt="AOE 2"></div>
+        <div class="game-info">
+            <h3 class="game-title">Age of Empires II</h3>
+            <p class="game-desc">Estrategia en tiempo real en la Edad Media.</p>
+            <div class="game-req-data">RAM: 4GB | Espacio: 5GB</div>
+        </div>
+    </div>
+
+    <div class="game-card" data-link="#">
+        <div class="game-thumb"><img src="imgs/undertale.jpg" alt="Undertale"></div>
+        <div class="game-info">
+            <h3 class="game-title">Undertale</h3>
+            <p class="game-desc">El RPG donde nadie tiene por qué morir.</p>
+            <div class="game-req-data">RAM: 2GB | Espacio: 200MB</div>
+        </div>
+    </div>
+
+    <div class="game-card" data-link="#">
+        <div class="game-thumb"><img src="imgs/the_forest.jpg" alt="The Forest"></div>
+        <div class="game-info">
+            <h3 class="game-title">The Forest</h3>
+            <p class="game-desc">Supervivencia extrema en una isla caníbal.</p>
+            <div class="game-req-data">RAM: 4GB | GPU: GTX 560</div>
+        </div>
+    </div>
+
+    <div class="game-card" data-link="#">
+        <div class="game-thumb"><img src="imgs/stardew.jpg" alt="Stardew Valley"></div>
+        <div class="game-info">
+            <h3 class="game-title">Stardew Valley</h3>
+            <p class="game-desc">Construye la granja de tus sueños.</p>
+            <div class="game-req-data">RAM: 2GB | Espacio: 500MB</div>
+        </div>
+    </div>
+
+    <div class="game-card" data-link="#">
+        <div class="game-thumb"><img src="imgs/zomboid.jpg" alt="Project Zomboid"></div>
+        <div class="game-info">
+            <h3 class="game-title">Project Zomboid</h3>
+            <p class="game-desc">Simulador de supervivencia zombie ultra realista.</p>
+            <div class="game-req-data">RAM: 8GB | GPU: 2GB VRAM</div>
+        </div>
+    </div>
+
+    <div class="game-card" data-link="#">
+        <div class="game-thumb"><img src="imgs/gmod.jpg" alt="GMOD"></div>
+        <div class="game-info">
+            <h3 class="game-title">Garry's Mod</h3>
+            <p class="game-desc">El sandbox físico definitivo sin límites.</p>
+            <div class="game-req-data">RAM: 4GB | GPU: 512MB VRAM</div>
+        </div>
+    </div>
+
+</div>
+
 <footer>
-    © 2026 GAMEZONE - RED EDITION
+    © 2026 GAMEZONE - RED EDITION | El buscador y los 14 juegos están activos.
 </footer>
 
 <div class="modal-overlay" id="overlay">
@@ -207,10 +288,11 @@
 </div>
 
 <script>
-    // LÓGICA DE BÚSQUEDA
     const searchInput = document.getElementById('gameSearch');
     const cards = document.querySelectorAll('.game-card');
+    const overlay = document.getElementById('overlay');
 
+    // BUSCADOR EN TIEMPO REAL
     searchInput.addEventListener('input', () => {
         const filter = searchInput.value.toLowerCase();
         cards.forEach(card => {
@@ -219,8 +301,7 @@
         });
     });
 
-    // LÓGICA DE MODAL
-    const overlay = document.getElementById('overlay');
+    // ABRIR MODAL
     cards.forEach(card => {
         card.addEventListener('click', () => {
             document.getElementById('mTitle').innerText = card.querySelector('.game-title').innerText;
@@ -232,6 +313,7 @@
         });
     });
 
+    // CERRAR MODAL
     document.getElementById('closeBtn').onclick = () => overlay.style.display = 'none';
     window.onclick = (e) => { if(e.target == overlay) overlay.style.display = 'none'; }
 </script>
