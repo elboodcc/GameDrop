@@ -4,260 +4,207 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GameZone - Red Edition</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
+        /* BASE Y FONDO */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
         body { 
-            background: radial-gradient(circle at top, #281616 0%, #050608 45%, #020203 100%);
+            background: radial-gradient(circle at top, #1a0f0f 0%, #050608 45%, #020203 100%);
             font-family: 'Roboto', sans-serif; 
             color: #fff; 
-            line-height: 1.6;
+            overflow-x: hidden;
         }
 
-        /* BARRA DE NAVEGACIÓN */
+        /* NAVEGACIÓN ESTILO GAMESFULLZ */
         nav { 
-            background: rgba(14, 9, 9, 0.95); 
-            padding: 15px 30px; 
+            background: rgba(10, 5, 5, 0.98); 
+            padding: 20px 30px; 
             display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            box-shadow: 0 3px 18px rgba(0,0,0,0.8); 
-            position: sticky; 
-            top: 0; 
-            z-index: 100; 
-            border-bottom: 1px solid #3b1f1f;
-            backdrop-filter: blur(8px);
+            justify-content: center; 
+            border-bottom: 3px solid #ff3939;
+            box-shadow: 0 5px 25px rgba(255, 0, 0, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
-        nav .logo { color: #ff5b5b; font-size: 28px; font-weight: 700; text-shadow: 0 0 10px #ff000080; }
-        nav ul { list-style: none; display: flex; gap: 20px; }
-        nav ul li a { color: #c7c7c7; font-weight: 500; transition: 0.3s; font-size: 14px; }
-        nav ul li a:hover { color: #ff5b5b; text-shadow: 0 0 8px #ff5b5b; }
+        nav .logo { color: #ff3939; font-size: 35px; font-weight: 900; text-transform: uppercase; letter-spacing: 4px; text-shadow: 0 0 15px rgba(255, 0, 0, 0.5); }
 
-        /* BUSCADOR */
-        .search-container {
-            max-width: 1300px;
-            margin: 30px auto 10px;
-            padding: 0 30px;
+        /* BUSCADOR Y CONTADOR */
+        .header-tools {
+            max-width: 1200px;
+            margin: 40px auto 10px;
+            padding: 0 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
         }
         #gameSearch {
             width: 100%;
+            max-width: 600px;
             padding: 15px 25px;
-            border-radius: 50px;
-            border: 1px solid #462c2c;
-            background: rgba(20, 10, 10, 0.8);
+            border-radius: 8px;
+            border: 1px solid #333;
+            background: #111;
             color: white;
             outline: none;
             font-size: 16px;
-            box-shadow: 0 0 15px rgba(255, 0, 0, 0.05);
+            text-align: center;
             transition: 0.3s;
         }
-        #gameSearch:focus {
-            border-color: #ff3939;
-            box-shadow: 0 0 20px rgba(255, 57, 57, 0.2);
-        }
+        #gameSearch:focus { border-color: #ff3939; box-shadow: 0 0 15px rgba(255, 57, 57, 0.2); }
+        .counter-badge { color: #ff5b5b; font-size: 14px; font-weight: bold; text-transform: uppercase; opacity: 0.8; }
 
-        /* CONTENEDOR DE JUEGOS */
+        /* GRILLA DE JUEGOS */
         .container { 
-            padding: 20px 20px 40px; 
+            padding: 40px 20px; 
             display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-            gap: 30px; 
-            max-width: 1400px;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
+            gap: 25px; 
+            max-width: 1300px;
             margin: 0 auto;
         }
 
         .game-card { 
-            background: radial-gradient(circle at top left,#1c1414,#0a0707 55%,#050606 100%); 
-            border-radius: 18px; 
+            background: #0f0f0f; 
+            border-radius: 8px; 
             overflow: hidden; 
-            box-shadow: 0 0 0 1px #3b1f1f, 0 0 15px rgba(255,0,0,0.1); 
-            transition: all 0.3s ease; 
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
             cursor: pointer;
-            border: 1px solid #281818;
+            border: 1px solid #222;
+            position: relative;
         }
-        .game-card:hover { 
-            transform: translateY(-8px); 
-            box-shadow: 0 0 25px rgba(255, 57, 57, 0.3);
-            border-color: #ff3939;
-        }
-        .game-thumb img { width: 100%; height: 200px; object-fit: cover; transition: 0.4s; }
-        .game-card:hover .game-thumb img { transform: scale(1.08); filter: saturate(1.2); }
 
-        .game-info { padding: 20px; }
-        .game-title { font-size: 19px; color: #ff5b5b; font-weight: 700; margin-bottom: 8px; }
-        .game-desc { font-size: 13px; color: #b0b0b0; height: 40px; overflow: hidden; }
-        .game-req-data { display: none; }
+        .game-card:hover { 
+            transform: scale(1.06); 
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.4);
+            border-color: #ff3939;
+            z-index: 10;
+        }
+
+        /* CARÁTULAS VERTICALES IMPACTANTES */
+        .game-thumb { 
+            width: 100%; 
+            height: 300px; 
+            overflow: hidden; 
+            position: relative;
+        }
+        .game-thumb img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            transition: 0.5s;
+        }
+        .game-card:hover .game-thumb img { filter: brightness(1.1) saturate(1.2); }
+
+        /* TÍTULOS LIMPIOS ABAJO */
+        .game-info { 
+            padding: 15px; 
+            background: #0a0a0a;
+            text-align: center;
+            border-top: 2px solid #ff3939;
+        }
+
+        .game-title { 
+            font-size: 14px; 
+            color: #fff; 
+            font-weight: 700; 
+            text-transform: uppercase;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            letter-spacing: 0.5px;
+        }
+
+        /* OCULTOS EN EL INICIO, PERO USADOS POR EL MODAL */
+        .game-desc, .game-req-data { display: none; }
 
         /* MODAL */
         .modal-overlay {
             position: fixed; inset: 0;
-            background: rgba(0,0,0,0.9);
+            background: rgba(0,0,0,0.95);
             backdrop-filter: blur(10px);
             display: none; align-items: center; justify-content: center;
-            z-index: 1000; padding: 20px;
+            z-index: 2000; padding: 20px;
         }
         .modal {
             width: 100%; max-width: 800px;
             background: #0d0d0d;
-            border-radius: 20px; border: 1px solid #462c2c;
+            border-radius: 15px; border: 1px solid #ff393950;
             position: relative; overflow: hidden;
-            animation: fadeIn 0.3s ease;
+            display: flex; flex-wrap: wrap;
         }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        .modal-close { position: absolute; top: 15px; right: 20px; font-size: 30px; cursor: pointer; color: #ff5b5b; z-index: 10; }
-        .modal-content { display: flex; flex-wrap: wrap; }
-        .modal-img-side { flex: 1 1 300px; }
+        .modal-close { position: absolute; top: 15px; right: 20px; font-size: 30px; cursor: pointer; color: #ff3939; z-index: 10; }
+        .modal-img-side { flex: 1 1 300px; height: 400px; }
         .modal-img-side img { width: 100%; height: 100%; object-fit: cover; }
-        .modal-info-side { flex: 1.2 1 300px; padding: 30px; }
-        .modal-title { font-size: 28px; color: #ff5b5b; margin-bottom: 10px; }
-        .modal-rating { color: #ffd86b; font-weight: bold; margin-bottom: 15px; }
-        .modal-req-box { background: #1a1111; padding: 15px; border-radius: 10px; border-left: 4px solid #ff3939; margin-bottom: 20px; font-size: 13px; color: #dca8a8; }
+        .modal-info-side { flex: 1.2 1 300px; padding: 30px; display: flex; flex-direction: column; justify-content: center; }
+        .modal-title { font-size: 28px; color: #ff3939; margin-bottom: 15px; text-transform: uppercase; font-weight: 900; }
+        .modal-req-box { background: #1a1111; padding: 15px; border-radius: 8px; border-left: 4px solid #ff3939; margin-bottom: 20px; color: #ccc; font-size: 14px; }
         .btn-download {
-            display: inline-block; padding: 12px 30px; background: linear-gradient(90deg, #ff3939, #990000);
-            color: #fff; font-weight: bold; border-radius: 50px; transition: 0.3s;
+            display: block; text-align: center; padding: 15px; background: #ff3939;
+            color: #fff; font-weight: bold; border-radius: 5px; text-decoration: none; transition: 0.3s;
+            text-transform: uppercase; letter-spacing: 1px;
         }
-        .btn-download:hover { transform: scale(1.05); box-shadow: 0 0 20px #ff3939; }
+        .btn-download:hover { background: #cc0000; box-shadow: 0 0 20px rgba(255, 57, 57, 0.4); }
 
-        footer { text-align: center; padding: 40px; color: #444; font-size: 12px; border-top: 1px solid #1a1a1a; }
+        footer { text-align: center; padding: 60px; color: #444; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; }
     </style>
 </head>
 <body>
 
 <nav>
     <div class="logo">GameZone</div>
-    <ul>
-        <li><a href="#">INICIO</a></li>
-        <li><a href="#">PC GAMES</a></li>
-        <li><a href="#">CONTACTO</a></li>
-    </ul>
 </nav>
 
-<div class="search-container">
-    <input type="text" id="gameSearch" placeholder="Escribe el nombre del juego para buscar...">
+<div class="header-tools">
+    <input type="text" id="gameSearch" placeholder="BUSCAR JUEGO...">
+    <div class="counter-badge" id="gameCount">29 JUEGOS DISPONIBLES</div>
 </div>
 
 <div class="container" id="gameGrid">
 
-    <div class="game-card" data-link="https://www.mediafire.com/file/5a0j760kvu8c92j/UK_-.rar/file">
-        <div class="game-thumb"><img src="imgs/ultrakill.jpg" alt="ULTRAKILL"></div>
-        <div class="game-info">
-            <h3 class="game-title">ULTRAKILL</h3>
-            <p class="game-desc">Shooter frenético retro con mucha sangre.</p>
-            <div class="game-req-data">OS: Win 7+ | RAM: 4GB</div>
-        </div>
-    </div>
-
-    <div class="game-card" data-link="https://www.mediafire.com/file/lkaeeuyx93jjmba/LFORD_1.rar/file">
-        <div class="game-thumb"><img src="imgs/l4d1.png" alt="Left 4 Dead"></div>
-        <div class="game-info"><h3 class="game-title">Left 4 Dead</h3><p class="game-desc">Cooperativo clásico de zombies.</p><div class="game-req-data">RAM: 2GB</div></div>
-    </div>
-
-    <div class="game-card" data-link="https://www.mediafire.com/file/mplrdftfwxmd0x0/GTA+San+Andreas+By+Sajord.zip/file">
-        <div class="game-thumb"><img src="imgs/gta_sa.jpg" alt="GTA SA"></div>
-        <div class="game-info"><h3 class="game-title">GTA San Andreas</h3><p class="game-desc">Mundo abierto icónico.</p><div class="game-req-data">RAM: 1GB</div></div>
-    </div>
-
-    <div class="game-card" data-link="#">
-        <div class="game-thumb"><img src="imgs/terraria.webp" alt="Terraria"></div>
-        <div class="game-info"><h3 class="game-title">Terraria</h3><p class="game-desc">Cava, lucha y construye.</p><div class="game-req-data">RAM: 4GB</div></div>
-    </div>
-
-    <div class="game-card" data-link="https://www.mediafire.com/file/zuyc6whs4vmrfhv/Castle+Crashers+By_Sajord.zip/file">
-        <div class="game-thumb"><img src="imgs/castle_crashers.jpg" alt="Castle Crashers"></div>
-        <div class="game-info"><h3 class="game-title">Castle Crashers</h3><p class="game-desc">Acción arcade medieval.</p><div class="game-req-data">RAM: 1GB</div></div>
-    </div>
-
-    <div class="game-card" data-link="#">
-        <div class="game-thumb"><img src="imgs/fnaf.jpg" alt="FNAF"></div>
-        <div class="game-info"><h3 class="game-title">Five Nights at Freddy's</h3><p class="game-desc">Sobrevive a los animatrónicos.</p><div class="game-req-data">RAM: 2GB</div></div>
-    </div>
-
-    <div class="game-card" data-link="#">
-        <div class="game-thumb"><img src="imgs/pvz.jpg" alt="PVZ"></div>
-        <div class="game-info"><h3 class="game-title">Plantas Vs Zombies</h3><p class="game-desc">Defiende tu jardín.</p><div class="game-req-data">RAM: 1GB</div></div>
-    </div>
-
-    <div class="game-card" data-link="https://www.mediafire.com/file/pjm55aus53vxi2b/Hollow_Knight_By_Sajord.rar/file">
-        <div class="game-thumb"><img src="imgs/hollowknight.jpg" alt="Hollow Knight"></div>
-        <div class="game-info"><h3 class="game-title">Hollow Knight</h3><p class="game-desc">Metroidvania épico.</p><div class="game-req-data">RAM: 4GB</div></div>
-    </div>
-
-    <div class="game-card" data-link="#"><div class="game-thumb"><img src="imgs/aoe2.jpg"></div><div class="game-info"><h3 class="game-title">Age of Empires II</h3><p class="game-desc">Estrategia medieval.</p><div class="game-req-data">RAM: 4GB</div></div></div>
-    <div class="game-card" data-link="#"><div class="game-thumb"><img src="imgs/undertale.jpg"></div><div class="game-info"><h3 class="game-title">Undertale</h3><p class="game-desc">El RPG donde nadie muere.</p><div class="game-req-data">RAM: 2GB</div></div></div>
-    <div class="game-card" data-link="#"><div class="game-thumb"><img src="imgs/the_forest.jpg"></div><div class="game-info"><h3 class="game-title">The Forest</h3><p class="game-desc">Supervivencia en isla caníbal.</p><div class="game-req-data">RAM: 4GB</div></div></div>
-    <div class="game-card" data-link="#"><div class="game-thumb"><img src="imgs/stardew.jpg"></div><div class="game-info"><h3 class="game-title">Stardew Valley</h3><p class="game-desc">Crea tu granja.</p><div class="game-req-data">RAM: 2GB</div></div></div>
-    <div class="game-card" data-link="#"><div class="game-thumb"><img src="imgs/zomboid.jpg"></div><div class="game-info"><h3 class="game-title">Project Zomboid</h3><p class="game-desc">Supervivencia zombie realista.</p><div class="game-req-data">RAM: 8GB</div></div></div>
-    <div class="game-card" data-link="#"><div class="game-thumb"><img src="imgs/gmod.jpg"></div><div class="game-info"><h3 class="game-title">Garry's Mod</h3><p class="game-desc">Sandbox físico sin límites.</p><div class="game-req-data">RAM: 4GB</div></div></div>
-
-    <div class="game-card" data-link="https://gofile.io/d/FqofbL"><div class="game-thumb"><img src="imgs/cod_mw2.jpg"></div><div class="game-info"><h3 class="game-title">Call Of Duty Modern Warfare 2 (2009)</h3><p class="game-desc">Shooter bélico legendario.</p><div class="game-req-data">RAM: 2GB</div></div></div>
-    <div class="game-card" data-link="https://gofile.io/d/JH9LIv"><div class="game-thumb"><img src="imgs/south_park.jpg"></div><div class="game-info"><h3 class="game-title">South Park: La Vara De La Verdad</h3><p class="game-desc">Aventura épica de South Park.</p><div class="game-req-data">RAM: 2GB</div></div></div>
-    <div class="game-card" data-link="https://www.mediafire.com/file/fl4k9spcrkjdbcl/Dark_Soul_Remastered_By_Sajord.rar/file"><div class="game-thumb"><img src="imgs/dark_souls.jpg"></div><div class="game-info"><h3 class="game-title">Dark Soul: Remastered</h3><p class="game-desc">Un desafío oscuro y difícil.</p><div class="game-req-data">RAM: 6GB</div></div></div>
-    <div class="game-card" data-link="https://gofile.io/d/05kfR7"><div class="game-thumb"><img src="imgs/rdr1.jpg"></div><div class="game-info"><h3 class="game-title">Red Dead Redemption 1</h3><p class="game-desc">Épica historia en el Oeste.</p><div class="game-req-data">RAM: 8GB</div></div></div>
-    <div class="game-card" data-link="https://gofile.io/d/Ze3FEs"><div class="game-thumb"><img src="imgs/re6.jpg"></div><div class="game-info"><h3 class="game-title">Resident Evil 6</h3><p class="game-desc">Acción biológica global.</p><div class="game-req-data">RAM: 2GB</div></div></div>
-    <div class="game-card" data-link="https://gofile.io/d/deFQan"><div class="game-thumb"><img src="imgs/halo_ce.jpg"></div><div class="game-info"><h3 class="game-title">Halo: Combat Evolved</h3><p class="game-desc">Inicio de la saga del Jefe Maestro.</p><div class="game-req-data">RAM: 512MB</div></div></div>
-
-    <div class="game-card" data-link="https://www.mediafire.com/file/190kjd8y4pnsv0p/R.E.4_By_Sajord.rar/file">
-        <div class="game-thumb"><img src="imgs/re4.jpg" alt="RE4"></div>
-        <div class="game-info"><h3 class="game-title">Resident Evil 4</h3><p class="game-desc">Rescata a la hija del presidente en España.</p><div class="game-req-data">RAM: 2GB | GPU: 256MB VRAM</div></div>
-    </div>
-
-    <div class="game-card" data-link="https://www.mediafire.com/file/e5fmeb5bse1egxo/Hollow_Knight_Silksong_By_Sajord.rar/file">
-        <div class="game-thumb"><img src="imgs/silksong.webp" alt="Silksong"></div>
-        <div class="game-info"><h3 class="game-title">Hollow Knight: Silksong</h3><p class="game-desc">La esperada secuela con Hornet como protagonista.</p><div class="game-req-data">RAM: 4GB | Espacio: 9GB</div></div>
-    </div>
-
-    <div class="game-card" data-link="https://www.mediafire.com/file/ibtl7y4sxiveacz/R.E.5_By_Sajord.rar/file">
-        <div class="game-thumb"><img src="imgs/re5.jpg" alt="RE5"></div>
-        <div class="game-info"><h3 class="game-title">Resident Evil 5</h3><p class="game-desc">Terror cooperativo en el corazón de África.</p><div class="game-req-data">RAM: 2GB | GPU: GeForce 9800</div></div>
-    </div>
-
-    <div class="game-card" data-link="https://www.mediafire.com/file/669nya30bnzuzxe/Call+Of+Duty+4+Modern+Warfare+By+Sajord.rar/file">
-        <div class="game-thumb"><img src="imgs/cod4.jpg" alt="COD4"></div>
-        <div class="game-info"><h3 class="game-title">Call Of Duty 4: Modern Warfare</h3><p class="game-desc">La guerra moderna que revolucionó los shooters.</p><div class="game-req-data">RAM: 1GB | GPU: 256MB VRAM</div></div>
-    </div>
-
-    <div class="game-card" data-link="https://www.mediafire.com/file/z5dwop6quxnokns/Far_Cry_2_By_Sajord.rar/file">
-        <div class="game-thumb"><img src="imgs/farcry2.jpg" alt="Far Cry 2"></div>
-        <div class="game-info"><h3 class="game-title">Far Cry 2</h3><p class="game-desc">Supervivencia y fuego en la sabana africana.</p><div class="game-req-data">RAM: 1GB | GPU: 256MB VRAM</div></div>
-    </div>
-
-    <div class="game-card" data-link="https://www.mediafire.com/file/5vnt37rzxpbiiw9/Outlast+By_Sajord.zip/file">
-        <div class="game-thumb"><img src="imgs/outlast.jpg" alt="Outlast"></div>
-        <div class="game-info"><h3 class="game-title">Outlast 1 (DLC)</h3><p class="game-desc">Terror psicológico extremo en un manicomio.</p><div class="game-req-data">RAM: 2GB | GPU: 512MB VRAM</div></div>
-    </div>
-
-    <div class="game-card" data-link="https://www.mediafire.com/file/l6twe774bwmfmjs/Subnautica_By_Sajord.rar/file">
-        <div class="game-thumb"><img src="imgs/subnautica.jpg" alt="Subnautica"></div>
-        <div class="game-info"><h3 class="game-title">Subnautica</h3><p class="game-desc">Exploración y supervivencia en un océano alienígena.</p><div class="game-req-data">RAM: 8GB | GPU: Intel Haswell 4400</div></div>
-    </div>
-
-    <div class="game-card" data-link="https://www.mediafire.com/file/3thk73koai4keok/D0nt+Starv3+T0g3th3r.rar/file">
-        <div class="game-thumb"><img src="imgs/dst.jpg" alt="DST"></div>
-        <div class="game-info"><h3 class="game-title">Don't Starve Together</h3><p class="game-desc">No mueras de hambre con tus amigos.</p><div class="game-req-data">RAM: 1GB | GPU: 256MB VRAM</div></div>
-    </div>
-
-    <div class="game-card" data-link="https://gofile.io/d/eHIwGh">
-        <div class="game-thumb"><img src="imgs/cuphead.jpg" alt="Cuphead"></div>
-        <div class="game-info"><h3 class="game-title">Cuphead (DLC)</h3><p class="game-desc">Acción clásica de correr y disparar contra jefes.</p><div class="game-req-data">RAM: 3GB | GPU: 1GB VRAM</div></div>
-    </div>
+    <div class="game-card" data-link="https://www.mediafire.com/file/5a0j760kvu8c92j/UK_-.rar/file"><div class="game-thumb"><img src="imgs/ultrakill.webp"></div><div class="game-info"><h3 class="game-title">ULTRAKILL</h3><div class="game-req-data">RAM: 4GB | GPU: GTX 560</div></div></div>
+    <div class="game-card" data-link="https://www.mediafire.com/file/lkaeeuyx93jjmba/LFORD_1.rar/file"><div class="game-thumb"><img src="imgs/left4dead.webp"></div><div class="game-info"><h3 class="game-title">Left 4 Dead</h3><div class="game-req-data">RAM: 2GB</div></div></div>
+    <div class="game-card" data-link="https://www.mediafire.com/file/mplrdftfwxmd0x0/GTA+San+Andreas+By+Sajord.zip/file"><div class="game-thumb"><img src="imgs/gta_sa.webp"></div><div class="game-info"><h3 class="game-title">GTA San Andreas</h3><div class="game-req-data">RAM: 1GB</div></div></div>
+    <div class="game-card" data-link="#"><div class="game-thumb"><img src="imgs/terraria.webp"></div><div class="game-info"><h3 class="game-title">Terraria</h3><div class="game-req-data">RAM: 4GB</div></div></div>
+    <div class="game-card" data-link="https://www.mediafire.com/file/zuyc6whs4vmrfhv/Castle+Crashers+By_Sajord.zip/file"><div class="game-thumb"><img src="imgs/castle_crashers.webp"></div><div class="game-info"><h3 class="game-title">Castle Crashers</h3><div class="game-req-data">RAM: 1GB</div></div></div>
+    <div class="game-card" data-link="#"><div class="game-thumb"><img src="imgs/fnaf.webp"></div><div class="game-info"><h3 class="game-title">Five Nights at Freddy's</h3><div class="game-req-data">RAM: 2GB</div></div></div>
+    <div class="game-card" data-link="#"><div class="game-thumb"><img src="imgs/pvz.webp"></div><div class="game-info"><h3 class="game-title">Plantas Vs Zombies</h3><div class="game-req-data">RAM: 1GB</div></div></div>
+    <div class="game-card" data-link="https://www.mediafire.com/file/pjm55aus53vxi2b/Hollow_Knight_By_Sajord.rar/file"><div class="game-thumb"><img src="imgs/hollowknight.webp"></div><div class="game-info"><h3 class="game-title">Hollow Knight</h3><div class="game-req-data">RAM: 4GB</div></div></div>
+    <div class="game-card" data-link="#"><div class="game-thumb"><img src="imgs/aoe2.webp"></div><div class="game-info"><h3 class="game-title">Age of Empires II</h3><div class="game-req-data">RAM: 4GB</div></div></div>
+    <div class="game-card" data-link="#"><div class="game-thumb"><img src="imgs/undertale.webp"></div><div class="game-info"><h3 class="game-title">Undertale</h3><div class="game-req-data">RAM: 2GB</div></div></div>
+    <div class="game-card" data-link="#"><div class="game-thumb"><img src="imgs/the_forest.webp"></div><div class="game-info"><h3 class="game-title">The Forest</h3><div class="game-req-data">RAM: 4GB</div></div></div>
+    <div class="game-card" data-link="#"><div class="game-thumb"><img src="imgs/stardew.webp"></div><div class="game-info"><h3 class="game-title">Stardew Valley</h3><div class="game-req-data">RAM: 2GB</div></div></div>
+    <div class="game-card" data-link="#"><div class="game-thumb"><img src="imgs/zomboid.webp"></div><div class="game-info"><h3 class="game-title">Project Zomboid</h3><div class="game-req-data">RAM: 8GB</div></div></div>
+    <div class="game-card" data-link="#"><div class="game-thumb"><img src="imgs/gmod.webp"></div><div class="game-info"><h3 class="game-title">Garry's Mod</h3><div class="game-req-data">RAM: 4GB</div></div></div>
+    <div class="game-card" data-link="https://gofile.io/d/FqofbL"><div class="game-thumb"><img src="imgs/cod_mw2.webp"></div><div class="game-info"><h3 class="game-title">Call Of Duty MW2</h3><div class="game-req-data">RAM: 2GB</div></div></div>
+    <div class="game-card" data-link="https://gofile.io/d/JH9LIv"><div class="game-thumb"><img src="imgs/south_park.webp"></div><div class="game-info"><h3 class="game-title">South Park: Vara Verdad</h3><div class="game-req-data">RAM: 2GB</div></div></div>
+    <div class="game-card" data-link="https://www.mediafire.com/file/fl4k9spcrkjdbcl/Dark_Soul_Remastered_By_Sajord.rar/file"><div class="game-thumb"><img src="imgs/dark_souls.webp"></div><div class="game-info"><h3 class="game-title">Dark Soul Remastered</h3><div class="game-req-data">RAM: 6GB</div></div></div>
+    <div class="game-card" data-link="https://gofile.io/d/05kfR7"><div class="game-thumb"><img src="imgs/rdr1.webp"></div><div class="game-info"><h3 class="game-title">Red Dead Redemption 1</h3><div class="game-req-data">RAM: 8GB</div></div></div>
+    <div class="game-card" data-link="https://gofile.io/d/Ze3FEs"><div class="game-thumb"><img src="imgs/re6.webp"></div><div class="game-info"><h3 class="game-title">Resident Evil 6</h3><div class="game-req-data">RAM: 2GB</div></div></div>
+    <div class="game-card" data-link="https://gofile.io/d/deFQan"><div class="game-thumb"><img src="imgs/halo_ce.webp"></div><div class="game-info"><h3 class="game-title">Halo: Combat Evolved</h3><div class="game-req-data">RAM: 512MB</div></div></div>
+    <div class="game-card" data-link="https://www.mediafire.com/file/190kjd8y4pnsv0p/R.E.4_By_Sajord.rar/file"><div class="game-thumb"><img src="imgs/re4.webp"></div><div class="game-info"><h3 class="game-title">Resident Evil 4</h3><div class="game-req-data">RAM: 2GB</div></div></div>
+    <div class="game-card" data-link="https://www.mediafire.com/file/e5fmeb5bse1egxo/Hollow_Knight_Silksong_By_Sajord.rar/file"><div class="game-thumb"><img src="imgs/silksong.webp"></div><div class="game-info"><h3 class="game-title">HK: Silksong</h3><div class="game-req-data">RAM: 4GB</div></div></div>
+    <div class="game-card" data-link="https://www.mediafire.com/file/ibtl7y4sxiveacz/R.E.5_By_Sajord.rar/file"><div class="game-thumb"><img src="imgs/re5.webp"></div><div class="game-info"><h3 class="game-title">Resident Evil 5</h3><div class="game-req-data">RAM: 2GB</div></div></div>
+    <div class="game-card" data-link="https://www.mediafire.com/file/669nya30bnzuzxe/Call+Of+Duty+4+Modern+Warfare+By+Sajord.rar/file"><div class="game-thumb"><img src="imgs/cod4.webp"></div><div class="game-info"><h3 class="game-title">COD 4: MW</h3><div class="game-req-data">RAM: 1GB</div></div></div>
+    <div class="game-card" data-link="https://www.mediafire.com/file/z5dwop6quxnokns/Far_Cry_2_By_Sajord.rar/file"><div class="game-thumb"><img src="imgs/farcry2.webp"></div><div class="game-info"><h3 class="game-title">Far Cry 2</h3><div class="game-req-data">RAM: 1GB</div></div></div>
+    <div class="game-card" data-link="https://www.mediafire.com/file/5vnt37rzxpbiiw9/Outlast+By_Sajord.zip/file"><div class="game-thumb"><img src="imgs/outlast.webp"></div><div class="game-info"><h3 class="game-title">Outlast + DLC</h3><div class="game-req-data">RAM: 2GB</div></div></div>
+    <div class="game-card" data-link="https://www.mediafire.com/file/l6twe774bwmfmjs/Subnautica_By_Sajord.rar/file"><div class="game-thumb"><img src="imgs/subnautica.webp"></div><div class="game-info"><h3 class="game-title">Subnautica</h3><div class="game-req-data">RAM: 8GB</div></div></div>
+    <div class="game-card" data-link="https://www.mediafire.com/file/3thk73koai4keok/D0nt+Starv3+T0g3th3r.rar/file"><div class="game-thumb"><img src="imgs/dst.webp"></div><div class="game-info"><h3 class="game-title">Don't Starve Together</h3><div class="game-req-data">RAM: 1GB</div></div></div>
+    <div class="game-card" data-link="https://gofile.io/d/eHIwGh"><div class="game-thumb"><img src="imgs/cuphead.webp"></div><div class="game-info"><h3 class="game-title">Cuphead + DLC</h3><div class="game-req-data">RAM: 3GB</div></div></div>
 
 </div>
 
-<footer>© 2026 GAMEZONE - RED EDITION | Catálogo de 29 juegos completo.</footer>
+<footer>© 2026 GAMEZONE - EL MEJOR CATÁLOGO DE JUEGOS PC</footer>
 
 <div class="modal-overlay" id="overlay">
     <div class="modal">
         <span class="modal-close" id="closeBtn">&times;</span>
-        <div class="modal-content">
-            <div class="modal-img-side"><img id="mImg" src=""></div>
-            <div class="modal-info-side">
-                <h2 class="modal-title" id="mTitle"></h2>
-                <div class="modal-rating">⭐ Valoración: 4.8 / 5.0</div>
-                <p id="mDesc" style="margin-bottom: 20px; color: #ccc;"></p>
-                <div class="modal-req-box" id="mReq"></div>
-                <a href="#" class="btn-download" id="mLink" target="_blank">DESCARGAR AHORA</a>
-            </div>
+        <div class="modal-img-side"><img id="mImg" src=""></div>
+        <div class="modal-info-side">
+            <h2 class="modal-title" id="mTitle"></h2>
+            <div class="modal-req-box" id="mReq"></div>
+            <a href="#" class="btn-download" id="mLink" target="_blank">DESCARGAR JUEGO</a>
         </div>
     </div>
 </div>
@@ -265,22 +212,31 @@
 <script>
     const searchInput = document.getElementById('gameSearch');
     const cards = document.querySelectorAll('.game-card');
+    const countBadge = document.getElementById('gameCount');
     const overlay = document.getElementById('overlay');
 
+    // BUSCADOR
     searchInput.addEventListener('input', () => {
         const filter = searchInput.value.toLowerCase();
+        let visibleCount = 0;
         cards.forEach(card => {
             const title = card.querySelector('.game-title').innerText.toLowerCase();
-            card.style.display = title.includes(filter) ? "block" : "none";
+            if(title.includes(filter)) {
+                card.style.display = "block";
+                visibleCount++;
+            } else {
+                card.style.display = "none";
+            }
         });
+        countBadge.innerText = `${visibleCount} JUEGOS DISPONIBLES`;
     });
 
+    // MODAL
     cards.forEach(card => {
         card.addEventListener('click', () => {
             document.getElementById('mTitle').innerText = card.querySelector('.game-title').innerText;
             document.getElementById('mImg').src = card.querySelector('img').src;
-            document.getElementById('mDesc').innerText = card.querySelector('.game-desc').innerText;
-            document.getElementById('mReq').innerHTML = card.querySelector('.game-req-data').innerHTML;
+            document.getElementById('mReq').innerHTML = `<strong>REQUISITOS:</strong><br>${card.querySelector('.game-req-data').innerHTML}`;
             document.getElementById('mLink').href = card.getAttribute('data-link');
             overlay.style.display = 'flex';
         });
