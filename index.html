@@ -88,6 +88,26 @@
         .game-title { font-size: 14px; color: #fff; font-weight: 700; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; letter-spacing: 0.5px; }
         .game-req-data { display: none; }
 
+        /* ESTILO DE PAGINACIÓN */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0 40px;
+        }
+        .page-btn {
+            background: #111;
+            border: 1px solid #333;
+            color: #fff;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .page-btn:hover { border-color: #ff3939; color: #ff3939; }
+        .page-btn.active { background: #ff3939; border-color: #ff3939; }
+
         /* MODAL */
         .modal-overlay {
             position: fixed; inset: 0;
@@ -126,7 +146,7 @@
 
 <div class="header-tools">
     <input type="text" id="gameSearch" placeholder="BUSCAR JUEGO...">
-    <div class="counter-badge" id="gameCount">30 JUEGOS DISPONIBLES</div>
+    <div class="counter-badge" id="gameCount">31 JUEGOS DISPONIBLES</div>
 </div>
 
 <div class="container" id="gameGrid">
@@ -161,7 +181,11 @@
     <div class="game-card" data-link="https://www.mediafire.com/file/l6twe774bwmfmjs/Subnautica_By_Sajord.rar/file"><div class="game-thumb"><img src="imgs/subnautica.webp"></div><div class="game-info"><h3 class="game-title">Subnautica</h3><div class="game-req-data">RAM: 8GB</div></div></div>
     <div class="game-card" data-link="https://www.mediafire.com/file/3thk73koai4keok/D0nt+Starv3+T0g3th3r.rar/file"><div class="game-thumb"><img src="imgs/dst.webp"></div><div class="game-info"><h3 class="game-title">Don't Starve Together</h3><div class="game-req-data">RAM: 1GB</div></div></div>
     <div class="game-card" data-link="https://gofile.io/d/eHIwGh"><div class="game-thumb"><img src="imgs/cuphead.webp"></div><div class="game-info"><h3 class="game-title">Cuphead + DLC</h3><div class="game-req-data">RAM: 3GB</div></div></div>
+    
+    <div class="game-card" data-link="https://gofile.io/d/0eKnlV"><div class="game-thumb"><img src="imgs/femboy_roommate.png"></div><div class="game-info"><h3 class="game-title">My Femboy Roommate</h3><div class="game-req-data">RAM: 4GB</div></div></div>
 </div>
+
+<div class="pagination" id="pagination"></div>
 
 <footer>© 2026 GAMEZONE - EL MEJOR CATÁLOGO DE JUEGOS PC</footer>
 
@@ -187,18 +211,46 @@
 
 <script>
     const searchInput = document.getElementById('gameSearch');
-    const cards = document.querySelectorAll('.game-card');
+    const cards = Array.from(document.querySelectorAll('.game-card'));
+    const paginationContainer = document.getElementById('pagination');
     const overlay = document.getElementById('overlay');
+    const itemsPerPage = 30;
+    let currentPage = 1;
+
+    function displayPage(page) {
+        currentPage = page;
+        const start = (page - 1) * itemsPerPage;
+        const end = start + itemsPerPage;
+
+        cards.forEach((card, index) => {
+            card.style.display = (index >= start && index < end) ? "block" : "none";
+        });
+        updatePagination();
+    }
+
+    function updatePagination() {
+        paginationContainer.innerHTML = "";
+        const totalPages = Math.ceil(cards.length / itemsPerPage);
+        for (let i = 1; i <= totalPages; i++) {
+            const btn = document.createElement("button");
+            btn.innerText = i;
+            btn.className = "page-btn" + (i === currentPage ? " active" : "");
+            btn.onclick = () => { displayPage(i); window.scrollTo(0,0); };
+            paginationContainer.appendChild(btn);
+        }
+    }
 
     searchInput.addEventListener('input', () => {
         const filter = searchInput.value.toLowerCase();
-        let visibleCount = 0;
+        let count = 0;
         cards.forEach(card => {
             const title = card.querySelector('.game-title').innerText.toLowerCase();
-            if(title.includes(filter)) { card.style.display = "block"; visibleCount++; } 
+            if(title.includes(filter)) { card.style.display = "block"; count++; }
             else { card.style.display = "none"; }
         });
-        document.getElementById('gameCount').innerText = `${visibleCount} JUEGOS DISPONIBLES`;
+        if(filter === "") displayPage(1);
+        else paginationContainer.innerHTML = "";
+        document.getElementById('gameCount').innerText = `${count} JUEGOS DISPONIBLES`;
     });
 
     cards.forEach(card => {
@@ -209,18 +261,18 @@
             document.getElementById('mLink').href = card.getAttribute('data-link');
             document.getElementById('mStars').innerText = card.getAttribute('data-stars') || "★★★★☆";
             document.getElementById('mDesc').innerText = card.getAttribute('data-desc') || "Increíble título para descargar.";
-            
             const pass = card.getAttribute('data-pass');
             const passBox = document.getElementById('mPassContainer');
             if(pass) { passBox.style.display = 'block'; document.getElementById('mPass').innerText = pass; } 
             else { passBox.style.display = 'none'; }
-            
             overlay.style.display = 'flex';
         });
     });
 
     document.getElementById('closeBtn').onclick = () => overlay.style.display = 'none';
     window.onclick = (e) => { if(e.target == overlay) overlay.style.display = 'none'; }
+    
+    displayPage(1);
 </script>
 </body>
 </html>
