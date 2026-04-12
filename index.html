@@ -145,10 +145,22 @@
         .modal-stars { color: #ff3939; font-size: 18px; margin-bottom: 10px; letter-spacing: 2px; }
         .modal-title { font-size: 32px; color: #fff; margin-bottom: 10px; text-transform: uppercase; font-weight: 900; line-height: 1; }
         
-        .modal-about-title { font-size: 12px; color: #ff3939; text-transform: uppercase; font-weight: bold; margin-top: 15px; letter-spacing: 1px; }
-        .modal-description { color: #bbb; font-size: 14px; line-height: 1.6; margin-bottom: 20px; }
+        .modal-label { font-size: 12px; color: #ff3939; text-transform: uppercase; font-weight: bold; margin-top: 15px; letter-spacing: 1px; }
+        .modal-description { color: #bbb; font-size: 14px; line-height: 1.6; margin-bottom: 10px; }
+        
+        /* NUEVO APARTADO CONTRASEÑA */
+        .modal-pass-box { 
+            background: #221111; 
+            padding: 10px; 
+            border-radius: 5px; 
+            border: 1px dashed #ff3939; 
+            color: #ff9999; 
+            font-family: monospace; 
+            font-size: 15px; 
+            margin-bottom: 20px;
+            text-align: center;
+        }
 
-        .modal-req-title { font-size: 12px; color: #ff3939; text-transform: uppercase; font-weight: bold; margin-bottom: 8px; letter-spacing: 1px; }
         .modal-req-box { 
             background: rgba(255, 255, 255, 0.03); 
             padding: 15px; 
@@ -183,44 +195,26 @@
 
 <div class="header-tools">
     <input type="text" id="gameSearch" placeholder="BUSCAR JUEGO...">
-    <div class="counter-badge" id="gameCount">29 JUEGOS DISPONIBLES</div>
+    <div class="counter-badge" id="gameCount">30 JUEGOS DISPONIBLES</div>
 </div>
 
 <div class="container" id="gameGrid">
 
     <div class="game-card" 
-         data-link="https://www.mediafire.com/file/5a0j760kvu8c92j/UK_-.rar/file"
+         data-link="https://arch.primedatahost3.cfd/auth/media/v9nX8xH9e9eG6l2PxOoeHBoa/Lies_of_P_Deluxe_Edition_PC_Full_Español_2023.zip"
          data-stars="★★★★★"
-         data-desc="Un shooter en primera persona retro ultra violento. Combina disparos frenéticos con estilo y sangre para recuperar salud.">
-        <div class="game-thumb"><img src="imgs/ultrakill.webp"></div>
+         data-pass="3044"
+         data-desc="Un emocionante soulslike que toma la historia de Pinocho y la sitúa en el oscuro y elegante escenario de la Belle Époque.">
+        <div class="game-thumb"><img src="imgs/lies_of_p.png"></div>
         <div class="game-info">
-            <h3 class="game-title">ULTRAKILL</h3>
-            <div class="game-req-data">SO: Windows 7+<br>RAM: 4 GB<br>GPU: GTX 560 o superior<br>Espacio: 2 GB</div>
+            <h3 class="game-title">Lies Of P</h3>
+            <div class="game-req-data">RAM: 8GB | GPU: GTX 960 | Espacio: 50GB</div>
         </div>
     </div>
 
-    <div class="game-card" 
-         data-link="https://www.mediafire.com/file/lkaeeuyx93jjmba/LFORD_1.rar/file"
-         data-stars="★★★★☆"
-         data-desc="El clásico cooperativo de zombies. Sobrevive junto a tus amigos a hordas implacables en una atmósfera de película de terror.">
-        <div class="game-thumb"><img src="imgs/left4dead.webp"></div>
-        <div class="game-info">
-            <h3 class="game-title">Left 4 Dead</h3>
-            <div class="game-req-data">SO: Windows XP/Vista/7<br>RAM: 2 GB<br>GPU: 128 MB VRAM<br>Espacio: 8 GB</div>
-        </div>
-    </div>
-
-    <div class="game-card" 
-         data-link="https://www.mediafire.com/file/mplrdftfwxmd0x0/GTA+San+Andreas+By+Sajord.zip/file"
-         data-stars="★★★★★"
-         data-desc="La leyenda de CJ en Los Santos. Domina las calles, personaliza a tu personaje y vive la mejor historia de mundo abierto.">
-        <div class="game-thumb"><img src="imgs/GtaSa.webp"></div>
-        <div class="game-info">
-            <h3 class="game-title">GTA San Andreas</h3>
-            <div class="game-req-data">RAM: 1GB | GPU: 128MB</div>
-        </div>
-    </div>
-
+    <div class="game-card" data-link="https://www.mediafire.com/file/5a0j760kvu8c92j/UK_-.rar/file" data-stars="★★★★★" data-desc="Un shooter retro ultra violento."><div class="game-thumb"><img src="imgs/ultrakill.webp"></div><div class="game-info"><h3 class="game-title">ULTRAKILL</h3><div class="game-req-data">RAM: 4GB</div></div></div>
+    <div class="game-card" data-link="https://www.mediafire.com/file/lkaeeuyx93jjmba/LFORD_1.rar/file" data-stars="★★★★☆" data-desc="Cooperativo de zombies clásico."><div class="game-thumb"><img src="imgs/left4dead.webp"></div><div class="game-info"><h3 class="game-title">Left 4 Dead</h3><div class="game-req-data">RAM: 2GB</div></div></div>
+    <div class="game-card" data-link="https://www.mediafire.com/file/mplrdftfwxmd0x0/GTA+San+Andreas+By+Sajord.zip/file" data-stars="★★★★★" data-desc="La leyenda de CJ."><div class="game-thumb"><img src="imgs/GtaSa.webp"></div><div class="game-info"><h3 class="game-title">GTA San Andreas</h3><div class="game-req-data">RAM: 1GB</div></div></div>
     <div class="game-card" data-link="#"><div class="game-thumb"><img src="imgs/terraria.webp"></div><div class="game-info"><h3 class="game-title">Terraria</h3><div class="game-req-data">RAM: 4GB</div></div></div>
     <div class="game-card" data-link="https://www.mediafire.com/file/zuyc6whs4vmrfhv/Castle+Crashers+By_Sajord.zip/file"><div class="game-thumb"><img src="imgs/castle_crashers.webp"></div><div class="game-info"><h3 class="game-title">Castle Crashers</h3><div class="game-req-data">RAM: 1GB</div></div></div>
     <div class="game-card" data-link="#"><div class="game-thumb"><img src="imgs/fnaf.webp"></div><div class="game-info"><h3 class="game-title">Five Nights at Freddy's</h3><div class="game-req-data">RAM: 2GB</div></div></div>
@@ -260,10 +254,15 @@
             <div class="modal-stars" id="mStars">★★★★★</div>
             <h2 class="modal-title" id="mTitle"></h2>
             
-            <p class="modal-about-title">Sobre el juego</p>
-            <p class="modal-description" id="mDesc">No hay descripción disponible para este título todavía.</p>
+            <p class="modal-label">Sobre el juego</p>
+            <p class="modal-description" id="mDesc"></p>
 
-            <p class="modal-req-title">Requisitos Mínimos</p>
+            <div id="mPassContainer">
+                <p class="modal-label">Contraseña de extracción:</p>
+                <div class="modal-pass-box" id="mPass"></div>
+            </div>
+
+            <p class="modal-label">Requisitos Mínimos</p>
             <div class="modal-req-box" id="mReq"></div>
 
             <a href="#" class="btn-download" id="mLink" target="_blank">DESCARGAR AHORA</a>
@@ -277,7 +276,6 @@
     const countBadge = document.getElementById('gameCount');
     const overlay = document.getElementById('overlay');
 
-    // BUSCADOR
     searchInput.addEventListener('input', () => {
         const filter = searchInput.value.toLowerCase();
         let visibleCount = 0;
@@ -293,21 +291,28 @@
         countBadge.innerText = `${visibleCount} JUEGOS DISPONIBLES`;
     });
 
-    // MODAL CON NUEVA INFO
     cards.forEach(card => {
         card.addEventListener('click', () => {
-            // Datos básicos
             document.getElementById('mTitle').innerText = card.querySelector('.game-title').innerText;
             document.getElementById('mImg').src = card.querySelector('img').src;
             document.getElementById('mReq').innerHTML = card.querySelector('.game-req-data').innerHTML;
             document.getElementById('mLink').href = card.getAttribute('data-link');
 
-            // Datos extra (Estrellas y Descripción)
             const stars = card.getAttribute('data-stars') || "★★★★☆";
-            const desc = card.getAttribute('data-desc') || "Disfruta de este increíble título disponible en nuestro catálogo. Descárgalo y empieza a jugar ahora mismo.";
-            
+            const desc = card.getAttribute('data-desc') || "Increíble título disponible para descargar ahora mismo.";
+            const pass = card.getAttribute('data-pass');
+
             document.getElementById('mStars').innerText = stars;
             document.getElementById('mDesc').innerText = desc;
+
+            // Mostrar u ocultar el apartado de contraseña según el juego
+            const passBox = document.getElementById('mPassContainer');
+            if(pass) {
+                passBox.style.display = 'block';
+                document.getElementById('mPass').innerText = pass;
+            } else {
+                passBox.style.display = 'none';
+            }
 
             overlay.style.display = 'flex';
         });
