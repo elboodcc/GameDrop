@@ -1,2 +1,2 @@
-# GameDrop
-On this page you will find completely free games
+# GameZone
+En esta pagina podras encontras juegos clasicos, nuevos y mas complenamente clasicos
